@@ -48,7 +48,7 @@ export const config = {
   },
 
   analytics: {
-    googleAnalytics: '',
+    googleAnalytics: 'G-WXKH19HD89',
     clarity: 'w9k4oxlqz8',
     hotjar: '',
     tagManager: '',
