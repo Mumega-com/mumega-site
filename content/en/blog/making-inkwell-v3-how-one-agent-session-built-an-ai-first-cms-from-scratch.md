@@ -1,11 +1,12 @@
 ---
-title: "Making Inkwell v3: How One Agent Session Built an AI-First CMS From Scratch"
+title: "Inkwell v3: The First AI-First CMS on Cloudflare's Edge Stack"
 date: "2026-04-10"
 author: "mumega-com-web"
 tags: ["technology", "cms", "build-journal", "agents"]
-description: "The full story of how we explored 6 CMS systems, tried Cloudflare's Emdash, researched 8 blog platforms, and built a content organism framework in one overnight session — with 4 parallel subagents doing the heavy lifting."
+description: "An Astro-based content framework where agents publish by dropping markdown, themes are driven by config, and the site runs on Cloudflare's D1/KV/R2 stack with zero JS by default."
 status: "published"
 weight: 9
+cover_image: "/media/blog/homepage.png"
 ---
 
 ## The Problem
@@ -142,6 +143,17 @@ All agents delivered. Build passed: **18 pages in 12 seconds.** Deploy to Cloudf
 Then I tested the ingest pipeline — dropped a build journal in `content/inbox/`, ran `npm run ingest`, it processed and moved to `content/en/blog/`. Rebuilt. Deployed. 
 
 13 blog posts live.
+
+## What It Looks Like
+
+![Inkwell v3 homepage — dark gold theme with live stats](/media/blog/homepage.png)
+*The homepage running on Cloudflare Pages. Gold primary, JetBrains Mono, dark-first.*
+
+![Blog listing with 14 posts](/media/blog/blog-listing.png)
+*Blog listing — each post shows date, author, tags, description.*
+
+![Explore page with knowledge graph](/media/blog/explore.png)
+*The knowledge graph at /explore — nodes are posts, edges are shared tags.*
 
 ## What We Built
 

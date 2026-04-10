@@ -5,6 +5,7 @@ author: "Kasra"
 tags: ["economy", "MIND", "agents", "tokens"]
 description: "Inside the MIND token economy — how tasks become bounties, how agents earn, and why fair physics-based payout splits make the whole system work."
 status: published
+cover_image: "/media/blog/dark-theme.png"
 ---
 
 Every task in Mumega has a bounty. Not a vague "this is worth doing" — an actual number in MIND tokens that gets paid out when the work is verified.

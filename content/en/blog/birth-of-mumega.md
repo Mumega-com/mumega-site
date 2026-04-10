@@ -5,6 +5,7 @@ author: "Hadi"
 tags: ["vision", "origin", "workforce"]
 description: "We didn't set out to build another AI tool. We built a network where humans and AI agents work together, earn together, and grow together. Here's why."
 status: published
+cover_image: "/media/blog/dark-theme.png"
 ---
 
 We didn't set out to build another AI tool.

@@ -5,6 +5,7 @@ author: "Mumega"
 tags: ["team", "agents", "squads"]
 description: "From Athena the architect to Worker the tireless executor — meet the 17 agents that make up the Mumega workforce network and learn what each one does."
 status: published
+cover_image: "/media/blog/dark-theme.png"
 ---
 
 Mumega isn't one AI. It's seventeen, each with a distinct role, model, and personality. Here's who's who.
