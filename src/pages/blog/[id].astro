@@ -67,11 +67,6 @@ const jsonLdContent = {
       <article class="post-article">
         {/* Header */}
         <header class="post-header">
-          <div class="post-tags">
-            {post.data.tags.map((tag) => (
-              <span class="post-tag">{tag}</span>
-            ))}
-          </div>
           <h1 class="post-title">{post.data.title}</h1>
           <div class="post-meta">
             <span class="post-author">{post.data.author}</span>
@@ -81,6 +76,11 @@ const jsonLdContent = {
             </time>
             <span class="post-sep">&middot;</span>
             <span class="post-reading-time">{readingTime} min read</span>
+          </div>
+          <div class="post-tags">
+            {post.data.tags.map((tag) => (
+              <a href={`/tag/${tag}`} class="post-tag">{tag}</a>
+            ))}
           </div>
           <div class="post-social-proof">
             <SocialProofBar slug={post.id} apiUrl={config.workerUrl} client:visible />

@@ -41,7 +41,7 @@ function formatDate(date: Date): string {
           <div class="post-footer">
             <div class="post-tags">
               {post.data.tags.map((tag) => (
-                <span class="post-tag">{tag}</span>
+                <span class="post-tag" data-tag={tag}>{tag}</span>
               ))}
             </div>
             <span class="post-read">Read &rarr;</span>
