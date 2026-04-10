@@ -1,2 +1,5 @@
 node_modules\ndist\n.astro\n.env\n.env.local\nwrangler.toml
 workers/**/node_modules
+node_modules
+dist
+.astro
