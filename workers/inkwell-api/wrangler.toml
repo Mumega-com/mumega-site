@@ -9,3 +9,7 @@ SITE_URL = "https://mumega.com"
 binding = "DB"
 database_name = "inkwell-analytics"
 database_id = "40e442df-13d1-4ce5-a081-491962fe8e59"
+
+[[kv_namespaces]]
+binding = "CONTENT"
+id = "c303003bd718427c97f978773fce4f3a"

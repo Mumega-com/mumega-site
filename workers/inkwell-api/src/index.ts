@@ -3,7 +3,10 @@ import { cors } from 'hono/cors'
 
 interface Env {
   DB: D1Database
+  CONTENT: KVNamespace
   SITE_URL: string
+  PUBLISH_TOKEN?: string
+  CF_PAGES_DEPLOY_HOOK?: string
 }
 
 const app = new Hono<{ Bindings: Env }>()
@@ -132,6 +135,94 @@ app.get('/api/stats/:slug', async (c) => {
     avg_scroll_depth: views?.avg_scroll ?? null,
     reactions: reactionCounts,
   })
+})
+
+// ── Publishing ─────────────────────────────────────────────────────────
+
+app.post('/api/publish', async (c) => {
+  // Auth check
+  const token = c.env.PUBLISH_TOKEN
+  if (token) {
+    const auth = c.req.header('Authorization')
+    if (auth !== `Bearer ${token}`) {
+      return c.json({ error: 'unauthorized' }, 401)
+    }
+  }
+
+  const body = await c.req.json<{
+    title: string
+    content: string
+    slug?: string
+    author?: string
+    tags?: string[]
+    description?: string
+    status?: string
+  }>()
+
+  if (!body.title || !body.content) {
+    return c.json({ error: 'title and content required' }, 400)
+  }
+
+  const slug = body.slug || body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80)
+  const author = body.author || 'agent'
+  const tags = body.tags || []
+  const description = body.description || body.content.replace(/[#*>\[\]_`-]/g, '').trim().slice(0, 160)
+  const status = body.status || 'published'
+  const date = new Date().toISOString().slice(0, 10)
+
+  // Build frontmatter
+  const frontmatter = [
+    `title: "${body.title}"`,
+    `date: "${date}"`,
+    `author: "${author}"`,
+    `tags: [${tags.map(t => `"${t}"`).join(', ')}]`,
+    `description: "${description}"`,
+    `status: "${status}"`,
+  ].join('\n')
+
+  const markdown = `---\n${frontmatter}\n---\n\n${body.content}`
+
+  // Store in KV for immediate availability
+  await c.env.CONTENT.put(`post:${slug}`, markdown)
+  await c.env.CONTENT.put(`meta:${slug}`, JSON.stringify({
+    title: body.title, slug, author, tags, description, date, status,
+  }))
+
+  // Index in D1
+  await c.env.DB.prepare(
+    'INSERT OR REPLACE INTO content_index (slug, title, type, lang, author, tags, description, published_at, updated_at, word_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+  ).bind(slug, body.title, 'blog', 'en', author, JSON.stringify(tags), description, date, date, body.content.split(/\s+/).length).run()
+
+  // Trigger CF Pages deploy hook if configured
+  if (c.env.CF_PAGES_DEPLOY_HOOK) {
+    await fetch(c.env.CF_PAGES_DEPLOY_HOOK, { method: 'POST' }).catch(() => {})
+  }
+
+  return c.json({
+    ok: true,
+    slug,
+    url: `${c.env.SITE_URL}/blog/${slug}`,
+    stored: 'kv',
+    deploy: c.env.CF_PAGES_DEPLOY_HOOK ? 'triggered' : 'manual',
+  })
+})
+
+// List published content
+app.get('/api/posts', async (c) => {
+  const posts = await c.env.DB.prepare(
+    'SELECT slug, title, author, tags, description, published_at FROM content_index WHERE type = ? ORDER BY published_at DESC LIMIT 50'
+  ).bind('blog').all()
+
+  return c.json({ posts: posts.results })
+})
+
+// Get single post from KV
+app.get('/api/posts/:slug', async (c) => {
+  const slug = c.req.param('slug')
+  const content = await c.env.CONTENT.get(`post:${slug}`)
+  if (!content) return c.json({ error: 'not found' }, 404)
+  const meta = await c.env.CONTENT.get(`meta:${slug}`, 'json')
+  return c.json({ slug, meta, markdown: content })
 })
 
 export default { fetch: app.fetch }
