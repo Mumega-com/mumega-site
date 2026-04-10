@@ -6,6 +6,7 @@ import JsonLd from '../../components/seo/JsonLd.astro'
 import { ReadingProgress } from '../../components/navigation/ReadingProgress'
 import { TOC } from '../../components/navigation/TOC'
 import { Reactions } from '../../components/engagement/Reactions'
+import { SocialProofBar } from '../../components/engagement/SocialProofBar'
 import { ShareButtons } from '../../components/engagement/ShareButtons'
 import { NewsletterCTA } from '../../components/engagement/NewsletterCTA'
 import { getCollection, render } from 'astro:content'
@@ -80,6 +81,9 @@ const jsonLdContent = {
             </time>
             <span class="post-sep">&middot;</span>
             <span class="post-reading-time">{readingTime} min read</span>
+          </div>
+          <div class="post-social-proof">
+            <SocialProofBar slug={post.id} apiUrl="https://inkwell-api.weathered-scene-2272.workers.dev" client:visible />
           </div>
         </header>
 
@@ -219,6 +223,10 @@ const jsonLdContent = {
   .post-reading-time {
     font-family: var(--ink-font-mono);
     font-size: 0.8125rem;
+  }
+
+  .post-social-proof {
+    margin-top: 0.5rem;
   }
 
   /* Footer */

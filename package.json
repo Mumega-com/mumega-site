@@ -10,7 +10,10 @@
     "preview": "astro preview",
     "deploy": "astro build && wrangler pages deploy dist/",
     "ingest": "tsx scripts/ingest.ts",
-    "generate:og": "tsx scripts/generate-og.ts"
+    "generate:og": "tsx scripts/generate-og.ts",
+    "flywheel": "tsx scripts/flywheel.ts",
+    "upload": "tsx scripts/upload-media.ts",
+    "cache": "tsx scripts/cache-to-kv.ts"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.0",
@@ -24,6 +27,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
