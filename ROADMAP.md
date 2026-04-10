@@ -26,16 +26,16 @@
 
 ## P3 — Differentiators (what no other CMS does)
 
-- [ ] **i18n routing** — /en/, /fa/ with language switcher
-- [ ] **RTL support** — dir="rtl" for Arabic, Farsi
-- [ ] **Hreflang tags** — Auto-generate for multi-language content
-- [ ] **Annotations API** — Authenticated users/agents can annotate posts (correction, addition, question). Generic hook system — Inkwell provides the interface, integrations (SOS bus, GitHub, OAuth) are separate.
-- [ ] **Content flywheel** — Worker cron monitors HN/Reddit/RSS, drafts posts
-- [ ] **KV edge cache** — Pre-render to KV for instant global reads
-- [ ] **R2 media pipeline** — Upload, optimize, serve from R2
-- [ ] **Social proof bar** — Real view/read/reaction counts from D1
-- [ ] **KaTeX math** — LaTeX rendering in markdown
-- [ ] **Auto-tags** — Suggest tags from content analysis
+- [x] **i18n routing** — Astro built-in, RTL support, hreflang tags, language switcher
+- [x] **RTL support** — dir="rtl" from config.i18n.rtl
+- [x] **Hreflang tags** — self-ref + x-default, expandable
+- [x] **Annotations API** — Generic interface + Astro component, pluggable auth
+- [x] **Content flywheel** — scripts/flywheel.ts monitors HN RSS, scores by tags
+- [x] **KV edge cache** — lib/kv-cache.ts + scripts/cache-to-kv.ts
+- [x] **R2 media pipeline** — scripts/upload-media.ts
+- [x] **Social proof bar** — SocialProofBar.tsx fetches live D1 stats
+- [x] **KaTeX math** — remark-math + rehype-katex
+- [ ] **Auto-tags** — Suggest tags from content analysis (deferred to P4, needs AI)
 
 ## P4 — Organism (the system that improves itself)
 
