@@ -159,6 +159,8 @@ app.post('/api/publish', async (c) => {
     status?: string
   }>()
 
+  const overwrite = (body as Record<string, unknown>).overwrite === true
+
   if (!body.title || !body.content) {
     return c.json({ error: 'title and content required' }, 400)
   }
@@ -169,6 +171,14 @@ app.post('/api/publish', async (c) => {
   const description = body.description || body.content.replace(/[#*>\[\]_`-]/g, '').trim().slice(0, 160)
   const status = body.status || 'published'
   const date = new Date().toISOString().slice(0, 10)
+
+  // Slug uniqueness check
+  if (!overwrite) {
+    const existing = await c.env.CONTENT.get(`meta:${slug}`)
+    if (existing) {
+      return c.json({ error: 'slug_exists', slug, hint: 'Use overwrite:true to replace, or choose a different slug' }, 409)
+    }
+  }
 
   // Build frontmatter
   const frontmatter = [
@@ -182,7 +192,7 @@ app.post('/api/publish', async (c) => {
 
   const markdown = `---\n${frontmatter}\n---\n\n${body.content}`
 
-  // Store in KV for immediate availability
+  // Store in KV
   await c.env.CONTENT.put(`post:${slug}`, markdown)
   await c.env.CONTENT.put(`meta:${slug}`, JSON.stringify({
     title: body.title, slug, author, tags, description, date, status,
@@ -207,13 +217,43 @@ app.post('/api/publish', async (c) => {
   })
 })
 
-// List published content
+// List published content (public — no auth needed)
 app.get('/api/posts', async (c) => {
   const posts = await c.env.DB.prepare(
-    'SELECT slug, title, author, tags, description, published_at FROM content_index WHERE type = ? ORDER BY published_at DESC LIMIT 50'
-  ).bind('blog').all()
+    "SELECT slug, title, author, tags, description, published_at FROM content_index WHERE type = 'blog' ORDER BY published_at DESC LIMIT 50"
+  ).all()
 
-  return c.json({ posts: posts.results })
+  // Filter out drafts from public listing
+  const published = []
+  for (const post of posts.results) {
+    const meta = await c.env.CONTENT.get(`meta:${post.slug}`, 'json') as Record<string, unknown> | null
+    if (!meta || meta.status !== 'draft') published.push(post)
+  }
+
+  return c.json({ posts: published })
+})
+
+// List drafts (auth required)
+app.get('/api/drafts', async (c) => {
+  const token = c.env.PUBLISH_TOKEN
+  if (token) {
+    const auth = c.req.header('Authorization')
+    if (auth !== `Bearer ${token}`) {
+      return c.json({ error: 'unauthorized' }, 401)
+    }
+  }
+
+  const all = await c.env.DB.prepare(
+    "SELECT slug, title, author, tags, description, published_at FROM content_index WHERE type = 'blog' ORDER BY published_at DESC LIMIT 50"
+  ).all()
+
+  const drafts = []
+  for (const post of all.results) {
+    const meta = await c.env.CONTENT.get(`meta:${post.slug}`, 'json') as Record<string, unknown> | null
+    if (meta && meta.status === 'draft') drafts.push(post)
+  }
+
+  return c.json({ drafts })
 })
 
 // Get single post from KV
