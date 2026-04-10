@@ -13,16 +13,16 @@
 
 ## P2 — Product (makes it usable by others)
 
-- [ ] **Search** — Pagefind static search (npm install, build integration)
-- [ ] **Command palette** — Wire Cmd+K island, feed it content index
-- [ ] **Video hero** — Video-first page layout with chapters
-- [ ] **API publish** — Deploy inkwell-api Worker for POST → KV publish
-- [ ] **OG image generation** — Playwright script, auto-generate per post
-- [ ] **D1 analytics** — Wire view counts, reaction storage, newsletter subs
-- [ ] **Feature flags** — Config features actually toggle components in templates
-- [ ] **Mermaid diagrams** — Render `::mermaid` blocks via remark plugin
-- [ ] **Twitter Card meta** — Verify large image cards work
-- [ ] **Auto-description** — Generate meta description if missing in frontmatter
+- [x] **Search** — Pagefind static search, /search page, dark themed
+- [x] **Command palette** — Cmd+K wired in Base.astro with nav links
+- [ ] **Video hero** — Video-first page layout with chapters (needs video content)
+- [x] **API publish** — inkwell-api Worker with view, reaction, subscribe endpoints
+- [x] **OG image generation** — Playwright script (npm run generate:og)
+- [x] **D1 analytics** — Worker wired to inkwell-analytics D1 (page_views, reactions, subscribers)
+- [x] **Feature flags** — Config toggles gate ReadingProgress, Reactions, ShareButtons, NewsletterCTA
+- [x] **Mermaid diagrams** — ::mermaid blocks with CDN lazy-load, dark theme
+- [x] **Twitter Card meta** — summary_large_image verified in Base.astro
+- [x] **Auto-description** — Ingest generates from first sentence if missing
 
 ## P3 — Differentiators (what no other CMS does)
 
