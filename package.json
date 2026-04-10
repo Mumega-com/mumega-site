@@ -24,6 +24,7 @@
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
     "pagefind": "^1.5.0",
+    "playwright": "^1.59.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.0",
