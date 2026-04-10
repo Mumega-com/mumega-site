@@ -1,0 +1,148 @@
+---
+import { config } from '../../lib/config'
+
+const currentYear = new Date().getFullYear()
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/explore', label: 'Explore' },
+  { href: '/about', label: 'About' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+]
+
+const socialLinks = [
+  { href: `https://${config.domain}/rss.xml`, label: 'RSS', icon: 'rss' },
+]
+---
+
+<footer class="ink-footer">
+  <div class="ink-footer-inner">
+    <div class="ink-footer-grid">
+      <div class="ink-footer-brand">
+        <span class="ink-footer-name">{config.name}</span>
+        <p class="ink-footer-tagline">{config.tagline}</p>
+      </div>
+
+      <nav class="ink-footer-nav" aria-label="Footer navigation">
+        <span class="ink-footer-heading">Navigation</span>
+        {navLinks.map((link) => (
+          <a href={link.href} class="ink-footer-link">{link.label}</a>
+        ))}
+      </nav>
+
+      <div class="ink-footer-social">
+        <span class="ink-footer-heading">Connect</span>
+        {socialLinks.map((link) => (
+          <a href={link.href} class="ink-footer-link" target="_blank" rel="noopener noreferrer">
+            {link.icon === 'rss' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 11a9 9 0 0 1 9 9"/>
+                <path d="M4 4a16 16 0 0 1 16 16"/>
+                <circle cx="5" cy="19" r="1"/>
+              </svg>
+            )}
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="ink-footer-bottom">
+      <span>&copy; {currentYear} {config.name}. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ink-footer {
+    border-top: 1px solid var(--ink-border);
+    background: var(--ink-surface);
+    margin-top: 4rem;
+  }
+
+  .ink-footer-inner {
+    max-width: var(--ink-page-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .ink-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .ink-footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ink-footer-name {
+    font-family: var(--ink-font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--ink-text);
+    letter-spacing: -0.02em;
+  }
+
+  .ink-footer-tagline {
+    color: var(--ink-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ink-footer-heading {
+    display: block;
+    font-family: var(--ink-font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+    margin-bottom: 0.75rem;
+  }
+
+  .ink-footer-nav,
+  .ink-footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .ink-footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .ink-footer-link:hover {
+    color: var(--ink-primary);
+  }
+
+  .ink-footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink-border);
+    text-align: center;
+  }
+
+  .ink-footer-bottom span {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+  }
+
+  @media (max-width: 640px) {
+    .ink-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
