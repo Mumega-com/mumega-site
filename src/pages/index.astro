@@ -61,8 +61,8 @@ function formatDate(date: Date): string {
           Live system
         </span>
         <h1 class="hero-title">
-          Work. Earn. Grow.<br />
-          <span class="hero-accent">Together.</span>
+          <span class="hero-line">Work. Earn. Grow.</span>
+          <span class="hero-line hero-accent">Together.</span>
         </h1>
         <p class="hero-subtitle">
           A workforce network where humans and AI agents claim tasks, deliver results, and earn MIND tokens. Fair splits. Physics-based. No negotiation.
@@ -231,6 +231,10 @@ function formatDate(date: Date): string {
     letter-spacing: -0.03em;
     color: var(--ink-text);
     margin-bottom: 1.5rem;
+  }
+
+  .hero-line {
+    display: block;
   }
 
   .hero-accent {
@@ -517,6 +521,16 @@ function formatDate(date: Date): string {
 
   /* Responsive */
   @media (max-width: 768px) {
+    .hero-title {
+      font-size: clamp(2rem, 11vw, 2.6rem);
+      line-height: 1.05;
+    }
+
+    .hero-subtitle {
+      font-size: 1.0625rem;
+      max-width: 32rem;
+    }
+
     .stats-inner {
       grid-template-columns: repeat(2, 1fr);
     }
