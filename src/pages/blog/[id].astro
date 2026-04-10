@@ -83,7 +83,7 @@ const jsonLdContent = {
             <span class="post-reading-time">{readingTime} min read</span>
           </div>
           <div class="post-social-proof">
-            <SocialProofBar slug={post.id} apiUrl="https://inkwell-api.weathered-scene-2272.workers.dev" client:visible />
+            <SocialProofBar slug={post.id} apiUrl={config.workerUrl} client:visible />
           </div>
         </header>
 
@@ -94,7 +94,7 @@ const jsonLdContent = {
 
         {/* Engagement */}
         <footer class="post-footer">
-          {config.features.reactions && <Reactions slug={post.id} client:visible />}
+          {config.features.reactions && <Reactions slug={post.id} apiUrl={config.workerUrl + '/api/reaction'} client:visible />}
 
           <div class="post-share">
             {config.features.shareButtons && <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />}
@@ -104,7 +104,7 @@ const jsonLdContent = {
             <div class="post-newsletter">
               <h3 class="newsletter-title">Stay in the loop</h3>
               <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
-              <NewsletterCTA client:visible />
+              <NewsletterCTA apiUrl={config.workerUrl + '/api/subscribe'} client:visible />
             </div>
           )}
         </footer>

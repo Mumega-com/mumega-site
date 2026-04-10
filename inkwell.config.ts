@@ -71,6 +71,8 @@ export const config = {
     defaultAuthor: { name: 'Mumega', url: 'https://mumega.com' },
   },
 
+  workerUrl: 'https://inkwell-api.weathered-scene-2272.workers.dev',
+
   publish: {
     inbox: true,
     api: true,
