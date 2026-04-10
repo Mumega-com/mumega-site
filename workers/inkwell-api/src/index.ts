@@ -29,7 +29,7 @@ app.post('/api/view', async (c) => {
   const device = mobile === '?1' ? 'mobile' : 'desktop'
 
   await c.env.DB.prepare(
-    'INSERT INTO page_views (slug, referrer, scroll_depth, country, device, ts) VALUES (?, ?, ?, ?, ?, ?)'
+    'INSERT INTO page_views (slug, referrer, scroll_depth, country, device, timestamp) VALUES (?, ?, ?, ?, ?, ?)'
   ).bind(slug, referrer ?? null, scroll_depth ?? null, country, device, new Date().toISOString()).run()
 
   return c.json({ ok: true })
@@ -50,7 +50,7 @@ app.post('/api/reaction', async (c) => {
   const visitorHash = hashArray.map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 16)
 
   await c.env.DB.prepare(
-    'INSERT INTO reactions (slug, emoji, visitor_hash, ts) VALUES (?, ?, ?, ?)'
+    'INSERT INTO reactions (slug, emoji, visitor_hash, timestamp) VALUES (?, ?, ?, ?)'
   ).bind(slug, emoji, visitorHash, new Date().toISOString()).run()
 
   const counts = await c.env.DB.prepare(
@@ -83,14 +83,14 @@ app.get('/api/reactions/:slug', async (c) => {
 
 // Subscribe
 app.post('/api/subscribe', async (c) => {
-  const body = await c.req.json<{ email: string }>()
-  const { email } = body
+  const body = await c.req.json<{ email: string; name?: string; source?: string }>()
+  const { email, name, source } = body
 
   if (!email) return c.json({ error: 'email required' }, 400)
 
   await c.env.DB.prepare(
-    'INSERT OR IGNORE INTO subscribers (email, status, ts) VALUES (?, ?, ?)'
-  ).bind(email, 'active', new Date().toISOString()).run()
+    'INSERT OR IGNORE INTO subscribers (email, name, status, source) VALUES (?, ?, ?, ?)'
+  ).bind(email, name ?? '', 'active', source ?? 'website').run()
 
   return c.json({ ok: true, status: 'subscribed' })
 })
