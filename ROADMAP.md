@@ -2,14 +2,14 @@
 
 ## P1 — Core CMS (the CMS doesn't work without these)
 
-- [ ] **Wikilinks** — Parse `[[page]]` and `[[page|text]]` in markdown, resolve to URLs
-- [ ] **Backlinks** — Build reverse index, show "pages that link here" on each post
-- [ ] **:: block rendering** — Wire Callout, Tldr, PullQuote, Figure, StatsBar components to Astro's markdown pipeline via remark plugin
-- [ ] **Inline charts** — `::chart[bar]` markdown blocks rendered via Recharts island
-- [ ] **TOC in post layout** — Wire the TOC React island into Post.astro sidebar
-- [ ] **JSON-LD verified** — Confirm schema renders correctly on all page types
-- [ ] **Reading time** — Calculate and display in post header
-- [ ] **Analytics injection** — Verify GA/Clarity/Hotjar script tags render from config IDs
+- [x] **Wikilinks** — remark-wikilinks.ts parses [[page]] and [[page|text]]
+- [x] **Backlinks** — reverse index built by wikilinks plugin
+- [x] **:: block rendering** — remark-blocks.ts renders 8 block types
+- [x] **Inline charts** — ::chart blocks output data attributes for Recharts
+- [x] **TOC in post layout** — 220px sticky sidebar, hidden on mobile
+- [x] **JSON-LD verified** — BlogPosting + Organization + WebSite schemas
+- [x] **Reading time** — calculated from actual word count in post header
+- [x] **Analytics injection** — GA, GTM, Clarity, Hotjar, Plausible conditional on config
 
 ## P2 — Product (makes it usable by others)
 
