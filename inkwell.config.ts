@@ -49,7 +49,7 @@ export const config = {
 
   analytics: {
     googleAnalytics: '',
-    clarity: '',
+    clarity: 'w9k4oxlqz8',
     hotjar: '',
     tagManager: '',
     plausible: '',
