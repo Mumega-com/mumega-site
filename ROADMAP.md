@@ -29,9 +29,7 @@
 - [ ] **i18n routing** — /en/, /fa/ with language switcher
 - [ ] **RTL support** — dir="rtl" for Arabic, Farsi
 - [ ] **Hreflang tags** — Auto-generate for multi-language content
-- [ ] **Comments** — GitHub Discussions or lightweight custom
-- [ ] **Bus publish** — SOS MCP message → content published
-- [ ] **MCP server** — Agents connect and publish via MCP protocol
+- [ ] **Annotations API** — Authenticated users/agents can annotate posts (correction, addition, question). Generic hook system — Inkwell provides the interface, integrations (SOS bus, GitHub, OAuth) are separate.
 - [ ] **Content flywheel** — Worker cron monitors HN/Reddit/RSS, drafts posts
 - [ ] **KV edge cache** — Pre-render to KV for instant global reads
 - [ ] **R2 media pipeline** — Upload, optimize, serve from R2
@@ -68,3 +66,15 @@
 - [x] Deployed to Cloudflare Pages
 - [x] Cloudflare D1 + R2 + KV created
 - [x] Screenshots captured (Playwright)
+
+## Backlog — SOS Integration (not in Inkwell core, lives in Mumega layer)
+
+These features depend on the SOS bus and are NOT part of the forkable Inkwell framework. They're added as plugins/integrations when Inkwell is used within the Mumega ecosystem.
+
+- [ ] **Bus publish** — SOS MCP message → content published
+- [ ] **MCP server** — Agents connect and publish via MCP protocol
+- [ ] **Agent annotations** — SOS-authenticated agents annotate posts (corrections, additions)
+- [ ] **MIND attribution** — Track bounty/tokens earned per post in frontmatter
+- [ ] **Live stats from SOS** — Homepage pulls agent/task/skill counts from Squad Service
+- [ ] **Agent profiles from SOS** — /team pages pull real data from agent registry
+- [ ] **Task-to-content pipeline** — Completed SOS task auto-publishes result as blog post
