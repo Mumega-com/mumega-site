@@ -4,11 +4,13 @@ import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
 import JsonLd from '../../components/seo/JsonLd.astro'
 import { ReadingProgress } from '../../components/navigation/ReadingProgress'
+import { TOC } from '../../components/navigation/TOC'
 import { Reactions } from '../../components/engagement/Reactions'
 import { ShareButtons } from '../../components/engagement/ShareButtons'
 import { NewsletterCTA } from '../../components/engagement/NewsletterCTA'
 import { getCollection, render } from 'astro:content'
 import { config } from '../../lib/config'
+import { getReadingTime } from '../../lib/reading-time'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -21,8 +23,8 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await render(post)
 
-const wordCount = 1200
-const readingTime = Math.max(1, Math.ceil(wordCount / 250))
+const readingTime = getReadingTime(post.body ?? '')
+const wordCount = (post.body ?? '').trim().split(/\s+/).length
 
 function formatDate(date: Date): string {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
@@ -60,46 +62,52 @@ const jsonLdContent = {
   <Header />
 
   <main class="post-page">
-    <article class="post-article">
-      {/* Header */}
-      <header class="post-header">
-        <div class="post-tags">
-          {post.data.tags.map((tag) => (
-            <span class="post-tag">{tag}</span>
-          ))}
-        </div>
-        <h1 class="post-title">{post.data.title}</h1>
-        <div class="post-meta">
-          <span class="post-author">{post.data.author}</span>
-          <span class="post-sep">&middot;</span>
-          <time datetime={post.data.date.toISOString()} class="post-date">
-            {formatDate(new Date(post.data.date))}
-          </time>
-          <span class="post-sep">&middot;</span>
-          <span class="post-reading-time">{readingTime} min read</span>
-        </div>
-      </header>
+    <div class="post-layout">
+      <article class="post-article">
+        {/* Header */}
+        <header class="post-header">
+          <div class="post-tags">
+            {post.data.tags.map((tag) => (
+              <span class="post-tag">{tag}</span>
+            ))}
+          </div>
+          <h1 class="post-title">{post.data.title}</h1>
+          <div class="post-meta">
+            <span class="post-author">{post.data.author}</span>
+            <span class="post-sep">&middot;</span>
+            <time datetime={post.data.date.toISOString()} class="post-date">
+              {formatDate(new Date(post.data.date))}
+            </time>
+            <span class="post-sep">&middot;</span>
+            <span class="post-reading-time">{readingTime} min read</span>
+          </div>
+        </header>
 
-      {/* Body */}
-      <div class="ink-prose">
-        <Content />
-      </div>
-
-      {/* Engagement */}
-      <footer class="post-footer">
-        <Reactions slug={post.id} client:visible />
-
-        <div class="post-share">
-          <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />
+        {/* Body */}
+        <div class="ink-prose">
+          <Content />
         </div>
 
-        <div class="post-newsletter">
-          <h3 class="newsletter-title">Stay in the loop</h3>
-          <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
-          <NewsletterCTA client:visible />
-        </div>
-      </footer>
-    </article>
+        {/* Engagement */}
+        <footer class="post-footer">
+          <Reactions slug={post.id} client:visible />
+
+          <div class="post-share">
+            <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />
+          </div>
+
+          <div class="post-newsletter">
+            <h3 class="newsletter-title">Stay in the loop</h3>
+            <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
+            <NewsletterCTA client:visible />
+          </div>
+        </footer>
+      </article>
+
+      <aside class="toc-sidebar">
+        <TOC client:load />
+      </aside>
+    </div>
 
     {/* Related posts */}
     {related.length > 0 && (
@@ -132,9 +140,28 @@ const jsonLdContent = {
     padding: 4rem 1.5rem;
   }
 
+  .post-layout {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+
   .post-article {
     max-width: var(--ink-content-width);
-    margin: 0 auto;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .toc-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    padding-top: 3rem;
+  }
+
+  @media (max-width: 1024px) {
+    .toc-sidebar {
+      display: none;
+    }
   }
 
   /* Header */
