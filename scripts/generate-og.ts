@@ -7,6 +7,7 @@
 import { readFileSync, readdirSync, existsSync, mkdirSync } from 'fs'
 import { join, basename } from 'path'
 import { chromium } from 'playwright'
+import { config } from '../inkwell.config'
 
 const BLOG_DIR = join(process.cwd(), 'content/en/blog')
 const OUT_DIR = join(process.cwd(), 'public/media/og')
@@ -44,7 +45,7 @@ function collectPosts(): PostMeta[] {
     return {
       slug,
       title: data.title || slug.replace(/-/g, ' '),
-      author: data.author || 'Mumega',
+      author: data.author || (config.seo?.defaultAuthor?.name ?? 'Site Author'),
       date: data.date || '',
     }
   })
@@ -163,7 +164,7 @@ function buildHtml(post: PostMeta): string {
       <div class="author">${escaped(post.author)}</div>
       ${post.date ? `<div class="date">${escaped(post.date)}</div>` : ''}
     </div>
-    <div class="domain">mumega.com</div>
+    <div class="domain">${escaped(config.domain)}</div>
   </div>
 </body>
 </html>`

@@ -16,11 +16,13 @@ interface SocialProofBarProps {
 
 export function SocialProofBar({
   slug,
-  apiUrl = 'https://inkwell-api.weathered-scene-2272.workers.dev',
+  apiUrl,
 }: SocialProofBarProps) {
   const [stats, setStats] = useState<StatsResponse | null>(null)
 
   useEffect(() => {
+    if (!apiUrl) return
+
     const controller = new AbortController()
 
     fetch(`${apiUrl}/api/stats/${encodeURIComponent(slug)}`, {

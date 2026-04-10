@@ -1,7 +1,7 @@
-# Inkwell v3 — mumega.com
+# Inkwell
 
 ## What This Is
-Astro-based content organism framework. Config-driven, agent-first, zero hardcoded values.
+Astro-based content framework and publishing engine. Config-driven, agent-first, and designed to be forked.
 
 ## Commands
 ```bash
@@ -41,4 +41,4 @@ All from config → CSS vars:
 - `--ink-border` — borders
 
 ## Agent Publishing
-Drop markdown in `content/inbox/`, run `npm run ingest`. Or POST to Worker API. Or send MCP message.
+Drop markdown in `content/inbox/`, run `npm run ingest`. Or POST to a Worker API. Or wire your own publish command/tooling.

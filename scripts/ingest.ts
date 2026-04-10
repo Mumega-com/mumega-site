@@ -92,7 +92,7 @@ function run() {
     // Set defaults
     if (!data.title) data.title = `"${slug.replace(/-/g, ' ')}"`
     if (!data.date) data.date = `"${now}"`
-    if (!data.author) data.author = '"Mumega"'
+    if (!data.author) data.author = '"Site Author"'
     if (!data.tags) data.tags = '[]'
     if (!data.description || data.description === '""' || data.description === "''") {
       data.description = `"${autoDescription(body)}"`

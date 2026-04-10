@@ -1,6 +1,25 @@
 # Inkwell
 
-AI-first content framework on Astro + Cloudflare. Config-driven. Zero hardcoded values. Agents publish by dropping markdown or calling an API.
+Config-driven Astro CMS for agent-first publishing on Cloudflare.
+
+Inkwell is not a dashboard app and not a marketing site template. It is the content layer:
+- markdown/MDX content collections
+- config-driven theming and SEO
+- static search via Pagefind
+- optional Worker-backed reactions, newsletter, and publish APIs
+- inbox-style publishing for agents and automation
+
+This repo currently includes **Mumega-branded demo content** so the system has something real to render. Treat that content as example material, not as required product logic.
+
+## What Is Forkable
+
+Fork this repo when you want:
+- a blog/docs/content site on Astro
+- a Markdown-first publishing workflow
+- a Worker-backed publish/reaction/newsletter edge layer
+- a site that agents can publish into through files or HTTP
+
+Do **not** treat this repo as your customer app, dashboard, billing surface, or onboarding hub. It is the CMS layer.
 
 ## Quick Start
 
@@ -11,171 +30,116 @@ npm install
 npm run dev
 ```
 
-## What It Does
+Then replace these first:
+1. `inkwell.config.ts`
+2. `content/en/`
+3. `.env` values for analytics and Worker bindings
 
-- **Content engine** — markdown/MDX with wikilinks, backlinks, 14 content block types, inline charts, KaTeX math, mermaid diagrams
-- **Config-driven** — `inkwell.config.ts` controls theme, features, analytics, SEO. Change one file, entire site changes
-- **Zero JS by default** — Astro serves static HTML. React components hydrate as islands only where needed
-- **Cloudflare native** — Pages (hosting), D1 (analytics), R2 (media), KV (cache), Workers (API)
-- **Publish API** — `POST /api/publish` with auth token. Any agent with HTTP can publish
-- **Agent inbox** — drop markdown in `content/inbox/`, run `npm run publish`
+If you want a clean starting point, use [`inkwell.config.example.ts`](./inkwell.config.example.ts) as the base for your own config.
 
-## Content Blocks
+## Core Ideas
 
-14 block types available in markdown:
+- **Config, not scattered theme code** — site identity, theme, analytics, and feature flags live in `inkwell.config.ts`
+- **Zero-JS by default** — Astro renders HTML; React hydrates only where interactivity matters
+- **Agent-friendly publishing** — content can arrive from inbox files, HTTP APIs, or your own tool layer
+- **Cloudflare-native optional edge layer** — use Pages, Workers, KV, D1, and R2 when you want them, but the content build itself stays simple
 
-| Block | Usage |
-|-------|-------|
-| `::tldr` | Summary box at top |
-| `::pullquote` | Highlighted quote |
-| `::callout[info\|warning\|tip\|danger]` | Callout box with icon |
-| `::figure[/path/image.png]` | Image with caption |
-| `::stats` | Horizontal stat counters |
-| `::faq` | Q&A accordion |
-| `::chart[bar\|line\|scatter\|donut]` | Data charts (Recharts) |
-| `::mermaid` | Flowcharts, diagrams |
-| `::embed[url]` | YouTube, Twitter, CodePen |
-| `::comparison` | Side-by-side table with verdict |
-| `::timeline` | Visual event timeline |
-| `::metric{value="69" label="tasks"}` | Single big number |
-| `::cta{url="..." button="..."}` | Call to action |
-| `::before-after` | Two-state comparison |
+## Features
+
+- Markdown + MDX content
+- Wikilinks / backlinks
+- Pagefind search
+- Reading progress
+- Table of contents
+- Share buttons
+- Reactions
+- Newsletter CTA
+- Knowledge graph / explore surface
+- JSON-LD / sitemap / RSS
+- OG image generation
+- Inbox ingest + one-command publish flow
+
+## Project Structure
+
+```text
+inkwell.config.ts          # Active site config
+inkwell.config.example.ts  # Safer starter config for forks
+content/
+  inbox/                   # Drop markdown here for ingest/publish
+  en/blog/                 # Demo blog content
+  en/pages/                # Demo static pages
+src/
+  pages/                   # Astro routes
+  components/
+    content/               # Callout, figure, author card, etc.
+    engagement/            # Reactions, newsletter, social proof
+    layout/                # Header, footer, language switcher
+    navigation/            # TOC, command palette, reading progress
+    seo/                   # JSON-LD helpers
+    visualization/         # Video hero, knowledge graph
+workers/
+  inkwell-api/             # Optional Cloudflare Worker API
+scripts/
+  ingest.ts                # Inbox -> content collections
+  publish.sh               # Build, commit, push convenience flow
+  generate-og.ts           # Open Graph image generator
+```
 
 ## Commands
 
 ```bash
-npm run dev          # Dev server
-npm run build        # Production build (includes Pagefind search indexing)
-npm run publish      # Ingest inbox → build → commit → push → deploy
-npm run deploy       # Build + deploy to Cloudflare Pages
-npm run ingest       # Process content/inbox/ → content/en/
-npm run flywheel     # Scan RSS feeds for trending topics
-npm run generate:og  # Generate OG images (Playwright)
-npm run upload       # Upload files to R2
-npm run cache        # Cache built HTML to KV
+npm run dev
+npm run build
+npm run preview
+npm run ingest
+npm run publish
+npm run generate:og
+npm run deploy
 ```
 
-## Publishing
+## Publishing Modes
 
-Three ways to publish:
+### 1. Inbox publish
+
+Drop a markdown file into `content/inbox/` and run:
 
 ```bash
-# 1. HTTP API (any agent, anywhere)
-curl -X POST https://your-worker.workers.dev/api/publish \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"title":"My Post","content":"# Hello","author":"agent","tags":["test"]}'
-
-# 2. File inbox (server agents)
-echo '---
-title: My Post
-tags: [test]
----
-Content here' > content/inbox/my-post.md
 npm run publish
-
-# 3. Direct git
-# Write markdown to content/en/blog/, commit, push
 ```
 
-## Stack
+That flow ingests content, builds the site, commits the content changes, and pushes them.
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | Astro 6 |
-| Islands | React 19 |
-| Content | Markdown + MDX |
-| Hosting | Cloudflare Pages |
-| Database | Cloudflare D1 |
-| Media | Cloudflare R2 |
-| Cache | Cloudflare KV |
-| API | Cloudflare Workers (Hono) |
-| Search | Pagefind |
-| Math | KaTeX (remark-math + rehype-katex) |
-| Diagrams | Mermaid |
-| Charts | Recharts |
+### 2. Direct content authoring
 
-## Config
+Write markdown directly into `content/en/blog/` or `content/en/pages/`, then build and commit normally.
 
-Everything flows from `inkwell.config.ts`:
+### 3. API-backed publishing
 
-```typescript
-export const config = {
-  name: 'My Site',
-  domain: 'example.com',
-  tagline: 'Your tagline',
+If you deploy the Worker layer, you can expose your own `POST /api/publish` path and send content from agents or external systems.
 
-  theme: {
-    colors: { primary: '#D4A017', secondary: '#06B6D4' },
-    fonts: { display: "'JetBrains Mono'" },
-    darkFirst: true,
-  },
+## Fork Checklist
 
-  features: {
-    reactions: true,
-    newsletter: true,
-    knowledgeGraph: true,
-    search: true,
-    readingProgress: true,
-    toc: true,
-    commandPalette: true,
-    darkModeToggle: true,
-  },
+Before calling your fork production-ready, replace:
+- `inkwell.config.ts` site name, domain, theme, analytics, and Worker URL
+- demo content under `content/en/`
+- favicon/logo assets in `public/`
+- any Worker/API tokens and Cloudflare account settings
 
-  analytics: {
-    clarity: 'your-id',
-    googleAnalytics: 'G-XXXXX',
-    hotjar: '',
-    plausible: '',
-  },
+You should also decide whether you want:
+- a pure static content site
+- a static site plus Worker APIs
+- a CMS used by a larger hub/app elsewhere
 
-  i18n: {
-    defaultLang: 'en',
-    languages: ['en'],
-    rtl: ['fa', 'ar'],
-  },
+## Notes On Demo Content
 
-  workerUrl: 'https://your-worker.workers.dev',
-}
-```
+The current sample content documents the Mumega ecosystem because that is the first live implementation. That does **not** mean Inkwell is tied to Mumega.
 
-## Project Structure
-
-```
-inkwell.config.ts          # All configuration
-content/
-  inbox/                   # Drop markdown here → npm run publish
-  en/blog/                 # Published blog posts
-  en/pages/                # Static pages
-src/
-  pages/                   # Astro routes
-  components/
-    layout/                # Header, Footer, LanguageSwitcher
-    content/               # Callout, PullQuote, Figure, etc.
-    engagement/            # Reactions, ShareButtons, NewsletterCTA
-    navigation/            # TOC, CommandPalette, ReadingProgress
-    visualization/         # KnowledgeGraph, VideoHero
-    seo/                   # JsonLd
-  lib/
-    config.ts              # Config re-export
-    theme.ts               # Config → CSS custom properties
-    remark-wikilinks.ts    # [[page]] parser
-    remark-blocks.ts       # :: block renderer (14 types)
-    annotations.ts         # Annotation interface
-    kv-cache.ts            # Edge cache helper
-    reading-time.ts        # Word count calculation
-  styles/
-    base.css               # Typography, block styles, theme
-workers/
-  inkwell-api/             # Cloudflare Worker (publish, analytics, reactions)
-scripts/
-  ingest.ts                # Process inbox
-  publish.sh               # One-command publish
-  flywheel.ts              # Trending topic scanner
-  generate-og.ts           # OG image generation
-  upload-media.ts          # R2 upload
-  cache-to-kv.ts           # Edge cache builder
-```
+The reusable parts are:
+- content schemas
+- layout system
+- publishing scripts
+- Worker integration points
+- search, graph, and engagement components
 
 ## License
 
