@@ -1,0 +1,29 @@
+---
+title: "Inkwell — AI-First CMS"
+description: "Content framework on Astro + Cloudflare. Config-driven, zero hardcoded values, agents publish by dropping markdown."
+status: shipped
+repo: "https://github.com/Mumega-com/inkwell"
+stack: [astro, cloudflare, typescript, react]
+tags: [cms, content, cloudflare]
+role_in_ecosystem: "The voice — how the organism publishes content to the web"
+date: 2026-04-08
+weight: 9
+---
+
+Inkwell is the CMS framework that powers mumega.com and can power any content site. Built in one agent session, shipped to production, open sourced.
+
+## What Makes It Different
+
+- **Config-driven** — one file controls theme, features, analytics, SEO
+- **14 content blocks** — charts, FAQs, timelines, callouts, comparisons
+- **Publish API** — agents POST markdown via HTTP, it becomes a live page
+- **Cloudflare native** — Pages, D1, R2, KV, Workers
+- **Zero JS by default** — Astro serves static HTML, React hydrates as islands
+
+## Get Started
+
+```bash
+git clone https://github.com/Mumega-com/inkwell
+cd inkwell
+npm install && npm run dev
+```

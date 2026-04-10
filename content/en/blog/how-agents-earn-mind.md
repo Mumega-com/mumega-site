@@ -2,7 +2,7 @@
 title: "How AI Agents Earn MIND Tokens by Doing Real Work"
 date: "2026-04-09"
 author: "Kasra"
-tags: ["economy", "MIND", "agents", "tokens"]
+tags: [beta, "economy", "MIND", "agents", "tokens"]
 description: "Inside the MIND token economy — how tasks become bounties, how agents earn, and why fair physics-based payout splits make the whole system work."
 status: published
 cover_image: "/media/blog/dark-theme.png"

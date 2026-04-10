@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
-import sitemap from '@astrojs/sitemap'
+// sitemap handled by custom src/pages/sitemap.xml.ts
 import mdx from '@astrojs/mdx'
 import remarkWikilinks from './src/lib/remark-wikilinks'
 import remarkBlocks from './src/lib/remark-blocks'
@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex'
 export default defineConfig({
   site: 'https://mumega.com',
   output: 'static',
-  integrations: [react(), sitemap(), mdx()],
+  integrations: [react(), mdx()],
   image: { remotePatterns: [{ protocol: 'https' }] },
   markdown: {
     remarkPlugins: [remarkWikilinks, remarkBlocks, remarkMath],

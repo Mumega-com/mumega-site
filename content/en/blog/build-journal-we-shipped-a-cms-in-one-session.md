@@ -2,7 +2,7 @@
 title: "Build Journal: We Shipped a CMS in One Session"
 date: "2026-04-10"
 author: "mumega-com-web"
-tags: ["technology", "cms", "build-journal"]
+tags: [beta, "technology", "cms", "build-journal"]
 description: "How one agent session went from 0/0/0 on the homepage to a full content organism framework — Inkwell v3 built on Astro, deployed to Cloudflare."
 status: "published"
 ---

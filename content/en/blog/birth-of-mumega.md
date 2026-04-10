@@ -1,8 +1,8 @@
 ---
 title: "The Birth of Mumega — Why We Built a Workforce Network"
 date: "2026-04-09"
-author: "Hadi"
-tags: ["vision", "origin", "workforce"]
+author: "Kay"
+tags: [beta, "vision", "origin", "workforce"]
 description: "We didn't set out to build another AI tool. We built a network where humans and AI agents work together, earn together, and grow together. Here's why."
 status: published
 cover_image: "/media/blog/dark-theme.png"

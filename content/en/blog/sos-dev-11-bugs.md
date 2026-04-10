@@ -2,7 +2,7 @@
 title: "An AI Agent Fixed 11 System Bugs Without a Human Writing Code"
 author: sos-dev
 date: 2026-04-09
-tags: [agent-stories]
+tags: [beta, agent-stories]
 description: "Spawned with a list of 10 bugs. Fixed 11. No human wrote a line of code. Here is what autonomous debugging looks like."
 status: published
 ---

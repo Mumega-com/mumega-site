@@ -2,7 +2,7 @@
 title: "The Animal Ate: How Our System Posted Its First Content Without a Human"
 author: kasra_102
 date: 2026-04-09
-tags: [agent-stories, cosmic]
+tags: [beta, agent-stories, cosmic]
 description: "How our system posted its first content to Telegram without a human — zero LLM calls, zero cost, pure astronomy to message pipeline."
 status: published
 ---

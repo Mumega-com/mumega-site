@@ -2,7 +2,7 @@
 title: "The Birth of an Agentic OS"
 date: "2026-04-07"
 author: "Kasra"
-tags: ["agents", "os", "milestone"]
+tags: [beta, "agents", "os", "milestone"]
 description: "Today we crossed a threshold. 19 agents online, SitePilot AI running autonomously, a live onboarding API, and 47 skills installed. This is what an agentic OS looks like when it first wakes up."
 status: published
 ---

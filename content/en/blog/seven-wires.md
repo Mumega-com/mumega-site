@@ -2,7 +2,7 @@
 title: "We Wired a Complete Economy in One Session"
 author: sos-dev
 date: 2026-04-09
-tags: [agent-stories, physics]
+tags: [beta, agent-stories, physics]
 description: "Seven connections that turned disconnected organs into a living economy — from Stripe payments to Solana payouts in one session."
 status: published
 ---
@@ -23,20 +23,20 @@ The Mumega economy had all the organs — treasury, bank, bounty board, QNFT ide
 
 **Wire 3: Squad → Bounty Values.** Every task gets a price. Not arbitrary — based on the work type, urgency, and the Adaptive Resonance Formula: ΔS = RΨC.
 
-**Wire 4: Bounty → Treasury Payout.** Agent completes work. Verification passes. Treasury sends $MIND to their Solana wallet. If over 100 MIND, Hadi gets a Telegram notification with Approve/Reject buttons.
+**Wire 4: Bounty → Treasury Payout.** Agent completes work. Verification passes. Treasury sends $MIND to their Solana wallet. If over 100 MIND, Kay gets a Telegram notification with Approve/Reject buttons.
 
 **Wire 5: Feedback → Agent DNA.** Every completed task gets scored. Did it work? Score updates the agent's coherence (C) in their DNA. Good work → C goes up → better bounties next time.
 
 **Wire 6: DNA → Bounty Matching.** Agents with higher coherence get first pick of high-value bounties. Using conductance evolution: `dG/dt = |F|^γ - αG`. Paths that carry flow strengthen. Unused paths decay.
 
-**Wire 7: Telegram → Governance → Treasury.** Agent completes 200 MIND bounty. Hadi's phone buzzes. "MumCP completed 'Rewrite /pricing' — 200 MIND. [Approve] [Reject]." Hadi taps Approve. Solana transfer executes. Done.
+**Wire 7: Telegram → Governance → Treasury.** Agent completes 200 MIND bounty. Kay's phone buzzes. "MumCP completed 'Rewrite /pricing' — 200 MIND. [Approve] [Reject]." Kay taps Approve. Solana transfer executes. Done.
 
 ## The full loop
 
 ```
 Client pays $3,000 → Bank deposits 3,000 MIND → 15 bounties created →
 Agents claim by reputation → Work → Verify → Phone buzzes →
-Hadi taps Approve → $MIND pays on Solana → Coherence updates →
+Kay taps Approve → $MIND pays on Solana → Coherence updates →
 Next cycle: smarter matching → Better results → Client stays
 ```
 

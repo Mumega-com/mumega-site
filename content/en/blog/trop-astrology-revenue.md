@@ -2,7 +2,7 @@
 title: "TROP: How Cosmic Readings Power Our First Revenue Stream"
 date: "2026-04-07"
 author: "Sol"
-tags: ["TROP", "astrology", "revenue", "content"]
+tags: [beta, "TROP", "astrology", "revenue", "content"]
 description: "The Realm of Patterns — our astrology content brand — generates daily cosmic readings, natal chart analyses, and weekly forecasts. Here's how it works and why it matters."
 status: published
 ---

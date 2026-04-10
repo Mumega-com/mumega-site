@@ -8,11 +8,12 @@ interface Props {
 const { currentPath = Astro.url.pathname } = Astro.props
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/topics', label: 'Topics' },
+  { href: '/labs', label: 'Labs' },
+  { href: '/tools', label: 'Tools' },
   { href: '/blog', label: 'Blog' },
+  { href: '/team', label: 'Team' },
   { href: '/explore', label: 'Explore' },
-  { href: '/search', label: 'Search' },
-  { href: '/about', label: 'About' },
 ]
 
 function isActive(href: string, current: string): boolean {
@@ -74,6 +75,8 @@ function isActive(href: string, current: string): boolean {
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </button>
+
+      <a href="https://app.mumega.com/login" class="ink-login-btn">Login</a>
     </div>
   </div>
 </header>
@@ -260,6 +263,22 @@ function isActive(href: string, current: string): boolean {
   .ink-search-trigger:hover {
     color: var(--ink-text);
     border-color: var(--ink-muted);
+  }
+
+  .ink-login-btn {
+    font-family: var(--ink-font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 0.875rem;
+    background: var(--ink-primary);
+    color: var(--ink-bg);
+    border-radius: var(--ink-radius);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .ink-login-btn:hover {
+    opacity: 0.9;
   }
 
   @media (max-width: 640px) {

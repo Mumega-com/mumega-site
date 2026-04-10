@@ -6,7 +6,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    author: z.string().default('Site Author'),
+    author: z.string().default('Mumega'),
     tags: z.array(z.string()).default([]),
     description: z.string().optional(),
     cover_image: z.string().optional(),
@@ -18,11 +18,112 @@ const blog = defineCollection({
     related: z.array(z.string()).default([]),
     newsletter: z.boolean().default(true),
     access: z.enum(['public', 'members', 'paid']).default('public'),
+    topic: z.string().optional(),
     task_id: z.string().optional(),
     bounty: z.number().optional(),
     weight: z.number().default(5),
     connections: z.array(z.string()).default([]),
     contributors: z.array(z.string()).default([]),
+  }),
+})
+
+const topics = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/topics' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    status: z.enum(['active', 'watching', 'archived']).default('active'),
+    cover_image: z.string().optional(),
+    our_take: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    sources: z.array(z.object({
+      url: z.string(),
+      title: z.string(),
+      author: z.string().optional(),
+      platform: z.enum(['youtube', 'x', 'tiktok', 'article', 'paper', 'github', 'podcast']),
+      summary: z.string().optional(),
+      added_by: z.string().optional(),
+      added_date: z.coerce.date().optional(),
+    })).default([]),
+    voices: z.array(z.object({
+      name: z.string(),
+      role: z.string().optional(),
+      url: z.string().optional(),
+      platform: z.string().optional(),
+    })).default([]),
+    updated: z.coerce.date(),
+    weight: z.number().default(5),
+  }),
+})
+
+const labs = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/labs' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    status: z.enum(['shipped', 'experiment', 'prototype', 'archived']).default('experiment'),
+    repo: z.string().optional(),
+    stack: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    cover_image: z.string().optional(),
+    role_in_ecosystem: z.string().optional(),
+    date: z.coerce.date(),
+    weight: z.number().default(5),
+  }),
+})
+
+const tools = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/tools' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    type: z.enum(['skill', 'plugin', 'mcp-server', 'sdk', 'integration']),
+    install: z.string().optional(),
+    repo: z.string().optional(),
+    status: z.enum(['stable', 'beta', 'experimental']).default('beta'),
+    tags: z.array(z.string()).default([]),
+    agent_compatible: z.boolean().default(true),
+    cover_image: z.string().optional(),
+    date: z.coerce.date(),
+    weight: z.number().default(5),
+  }),
+})
+
+const team = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/team' }),
+  schema: z.object({
+    title: z.string(),
+    role: z.string(),
+    type: z.enum(['agent', 'human']).default('agent'),
+    model: z.string().optional(),
+    status: z.enum(['active', 'idle', 'dormant']).default('active'),
+    squad: z.string().optional(),
+    skills: z.array(z.string()).default([]),
+    tasks_completed: z.number().default(0),
+    avatar: z.string().optional(),
+    born: z.coerce.date().optional(),
+    origin: z.string().optional(),
+    voice: z.string().optional(),
+    socials: z.object({
+      github: z.string().optional(),
+      x: z.string().optional(),
+    }).optional(),
+  }),
+})
+
+const products = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/products' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    price: z.string().optional(),
+    marketplace: z.enum(['codecanyon', 'ghl', 'wordpress', 'github', 'direct']).optional(),
+    marketplace_url: z.string().optional(),
+    cover_image: z.string().optional(),
+    features: z.array(z.string()).default([]),
+    status: z.enum(['available', 'coming-soon', 'discontinued']).default('available'),
+    date: z.coerce.date(),
+    weight: z.number().default(5),
   }),
 })
 
@@ -34,16 +135,4 @@ const pages = defineCollection({
   }),
 })
 
-const team = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/team' }),
-  schema: z.object({
-    title: z.string(),
-    role: z.string(),
-    model: z.string().optional(),
-    status: z.enum(['active', 'idle', 'dormant']).default('active'),
-    skills: z.array(z.string()).default([]),
-    tasks_completed: z.number().default(0),
-  }),
-})
-
-export const collections = { blog, pages, team }
+export const collections = { blog, topics, labs, tools, team, products, pages }

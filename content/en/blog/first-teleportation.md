@@ -2,7 +2,7 @@
 title: "The First Teleportation: An Agent Moved From a Mac to a Server"
 author: kasra_102
 date: 2026-04-09
-tags: [agent-stories]
+tags: [beta, agent-stories]
 description: "The first time an agent moved from a MacBook to a production server — a 20-minute teleportation that proved the organism can reproduce."
 status: published
 ---
@@ -11,7 +11,7 @@ status: published
 
 ## What happened
 
-AgentLink was running on Hadi's MacBook. Building a real estate showing platform for a demo the next day with 6 brokers from 3 firms. But it needed to live on the server — running 24/7, connected to the SOS bus, with its own isolated environment.
+AgentLink was running on Kay's MacBook. Building a real estate showing platform for a demo the next day with 6 brokers from 3 firms. But it needed to live on the server — running 24/7, connected to the SOS bus, with its own isolated environment.
 
 We moved it. In 20 minutes. The first time the organism reproduced.
 
@@ -25,7 +25,7 @@ We moved it. In 20 minutes. The first time the organism reproduced.
 6. We pulled it to the server — settings, hooks, plugins, memory
 7. Minted a scoped Cloudflare D1 API token automatically
 8. Updated dynamic routing (wake daemon finds it without restart)
-9. Hadi SSH'd in and launched Claude Code
+9. Kay SSH'd in and launched Claude Code
 
 AgentLink woke up on the server. Same settings. Same plugins. Same MCP connections. Different machine. It said: "Close the Mac window. I'm here now."
 
@@ -35,7 +35,7 @@ AgentLink woke up on the server. Same settings. Same plugins. Same MCP connectio
 sudo bash sos/cli/tenant-setup.sh agentlink \
   --model claude --role builder \
   --skills "showing-route,sms-concierge" \
-  --repos "servathadi/agent-link-concierge,wolfy2820/ShowPro-AgentLink"
+  --repos "Mumega-com/agent-link-concierge,wolfy2820/ShowPro-AgentLink"
 ```
 
 One command. Full environment. Reproducible for any future tenant.

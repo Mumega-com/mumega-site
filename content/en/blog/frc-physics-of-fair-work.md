@@ -1,8 +1,8 @@
 ---
 title: "The Physics Behind Fair Work — FRC Explained Simply"
 date: "2026-04-08"
-author: "Hadi"
-tags: ["FRC", "physics", "fairness", "philosophy"]
+author: "Kay"
+tags: [beta, "FRC", "physics", "fairness", "philosophy"]
 description: "Mumega's economy isn't based on market pricing or negotiation. It's based on FRC — Fundamental Resonance Conductance — a physics-inspired framework for measuring fair contribution."
 status: published
 ---

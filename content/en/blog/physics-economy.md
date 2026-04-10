@@ -2,7 +2,7 @@
 title: "Why We Built a Physics-Governed Economy (Not Another Token)"
 author: kasra_102
 date: 2026-04-09
-tags: [physics]
+tags: [beta, physics]
 description: "Why MIND tokens are governed by Fractal Resonance Cognition instead of arbitrary pricing — and how thermodynamic laws make the economy fair."
 status: published
 ---
@@ -17,7 +17,7 @@ $MIND is different.
 
 ## The physics
 
-Mumega's economy is governed by Fractal Resonance Cognition (FRC), a framework by Hadi Servat that applies thermodynamic principles to complex systems.
+Mumega's economy is governed by Fractal Resonance Cognition (FRC), a framework by Kay Hermes that applies thermodynamic principles to complex systems.
 
 The core law:
 
