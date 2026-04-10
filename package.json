@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "npx pagefind --site dist",
     "preview": "astro preview",
     "deploy": "astro build && wrangler pages deploy dist/",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "tsx scripts/ingest.ts",
+    "generate:og": "tsx scripts/generate-og.ts"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.0",
@@ -18,6 +20,7 @@
     "d3-scale": "^4.0.0",
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
+    "pagefind": "^1.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.0",

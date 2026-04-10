@@ -2,6 +2,7 @@
 import '../styles/base.css'
 import { generateCssVars } from '../lib/theme'
 import { config } from '../lib/config'
+import { CommandPalette } from '../components/navigation/CommandPalette'
 
 interface Props {
   title: string
@@ -26,6 +27,14 @@ const canonicalUrl = new URL(Astro.url.pathname, `https://${config.domain}`)
 const fullTitle = title === config.name ? title : `${title} — ${config.name}`
 
 const { analytics } = config
+
+const commandPaletteItems = [
+  { title: 'Home', slug: 'home', type: 'nav', url: '/' },
+  { title: 'Blog', slug: 'blog', type: 'nav', url: '/blog' },
+  { title: 'Explore', slug: 'explore', type: 'nav', url: '/explore' },
+  { title: 'Search', slug: 'search', type: 'nav', url: '/search' },
+  { title: 'About', slug: 'about', type: 'nav', url: '/about' },
+]
 ---
 
 <html lang={config.i18n.defaultLang} data-theme="dark">
@@ -141,5 +150,16 @@ const { analytics } = config
   </head>
   <body>
     <slot />
+    <CommandPalette client:load items={commandPaletteItems} />
+
+    {/* Mermaid diagram rendering — only loads if diagrams exist on the page */}
+    <script is:inline>
+      if (document.querySelector('.mermaid')) {
+        const s = document.createElement('script')
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
+        s.onload = () => mermaid.initialize({ theme: 'dark', themeVariables: { primaryColor: '#D4A017' } })
+        document.head.appendChild(s)
+      }
+    </script>
   </body>
 </html>

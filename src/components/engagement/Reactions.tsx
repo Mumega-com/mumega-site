@@ -37,7 +37,7 @@ function setLocalReactions(slug: string, state: ReactionState) {
   }
 }
 
-export function Reactions({ slug, apiUrl = '/api/analytics/reaction' }: ReactionsProps) {
+export function Reactions({ slug, apiUrl = '/api/reaction' }: ReactionsProps) {
   const [counts, setCounts] = useState<ReactionState>({})
   const [userCounts, setUserCounts] = useState<ReactionState>({})
   const [animating, setAnimating] = useState<string | null>(null)

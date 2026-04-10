@@ -34,6 +34,32 @@ function generateSlug(filename: string, title?: string): string {
   return base.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80)
 }
 
+function autoDescription(body: string): string {
+  // Strip markdown formatting characters
+  const plain = body
+    .replace(/^#{1,6}\s+/gm, '')      // headings
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '') // images
+    .replace(/\[[^\]]*\]\([^)]*\)/g, (m) => m.replace(/\[([^\]]*)\]\([^)]*\)/, '$1')) // links -> text
+    .replace(/[*_~`>#\-\[\]]/g, '')    // remaining markdown chars
+    .replace(/\n+/g, ' ')             // collapse newlines
+    .replace(/\s+/g, ' ')             // collapse whitespace
+    .trim()
+
+  if (!plain) return ''
+
+  // Take first sentence (ending with . ! or ?) if within 160 chars
+  const sentenceMatch = plain.match(/^(.+?[.!?])\s/)
+  if (sentenceMatch && sentenceMatch[1].length <= 160) {
+    return sentenceMatch[1].replace(/"/g, '\\"')
+  }
+
+  // Otherwise take first 160 chars, break at last word boundary
+  const truncated = plain.slice(0, 160)
+  const lastSpace = truncated.lastIndexOf(' ')
+  const result = lastSpace > 80 ? truncated.slice(0, lastSpace) : truncated
+  return (result.endsWith('.') ? result : result + '...').replace(/"/g, '\\"')
+}
+
 function run() {
   if (!existsSync(INBOX)) {
     console.log('No inbox directory.')
@@ -68,7 +94,9 @@ function run() {
     if (!data.date) data.date = `"${now}"`
     if (!data.author) data.author = '"Mumega"'
     if (!data.tags) data.tags = '[]'
-    if (!data.description) data.description = '""'
+    if (!data.description || data.description === '""' || data.description === "''") {
+      data.description = `"${autoDescription(body)}"`
+    }
     if (!data.status) data.status = '"published"'
 
     // Strip fields not in schema to prevent Zod validation errors

@@ -1,0 +1,11 @@
+name = "inkwell-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+SITE_URL = "https://mumega.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "inkwell-analytics"
+database_id = "40e442df-13d1-4ce5-a081-491962fe8e59"

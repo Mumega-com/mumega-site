@@ -165,6 +165,8 @@ function renderBlock(block: BlockMatch): string | null {
       return renderEmbed(block)
     case 'chart':
       return renderChart(block)
+    case 'mermaid':
+      return renderMermaid(block)
     default:
       return null
   }
@@ -273,6 +275,11 @@ function renderChart(block: BlockMatch): string {
 
   const jsonData = JSON.stringify(values).replace(/"/g, '&quot;')
   return `<div class="ink-chart" data-type="${chartType}" data-title="${title}" data-values="${jsonData}"></div>`
+}
+
+function renderMermaid(block: BlockMatch): string {
+  // Mermaid content must not be HTML-escaped — the library parses the raw diagram syntax
+  return `<div class="ink-mermaid"><pre class="mermaid">${block.content}</pre></div>`
 }
 
 // --- Helpers ---

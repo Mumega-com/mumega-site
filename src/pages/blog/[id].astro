@@ -58,7 +58,7 @@ const jsonLdContent = {
   author={post.data.author}
 >
   <JsonLd content={jsonLdContent} />
-  <ReadingProgress client:load />
+  {config.features.readingProgress && <ReadingProgress client:load />}
   <Header />
 
   <main class="post-page">
@@ -90,17 +90,19 @@ const jsonLdContent = {
 
         {/* Engagement */}
         <footer class="post-footer">
-          <Reactions slug={post.id} client:visible />
+          {config.features.reactions && <Reactions slug={post.id} client:visible />}
 
           <div class="post-share">
-            <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />
+            {config.features.shareButtons && <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />}
           </div>
 
-          <div class="post-newsletter">
-            <h3 class="newsletter-title">Stay in the loop</h3>
-            <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
-            <NewsletterCTA client:visible />
-          </div>
+          {config.features.newsletter && (
+            <div class="post-newsletter">
+              <h3 class="newsletter-title">Stay in the loop</h3>
+              <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
+              <NewsletterCTA client:visible />
+            </div>
+          )}
         </footer>
       </article>
 
