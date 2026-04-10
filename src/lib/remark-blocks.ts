@@ -144,7 +144,7 @@ function processBlocks(tree: Root): void {
 }
 
 function isSingleLineBlock(type: string): boolean {
-  return type === 'embed'
+  return type === 'embed' || type === 'metric'
 }
 
 function renderBlock(block: BlockMatch): string | null {
@@ -167,6 +167,16 @@ function renderBlock(block: BlockMatch): string | null {
       return renderChart(block)
     case 'mermaid':
       return renderMermaid(block)
+    case 'comparison':
+      return renderComparison(block)
+    case 'timeline':
+      return renderTimeline(block)
+    case 'metric':
+      return renderMetric(block)
+    case 'cta':
+      return renderCta(block)
+    case 'before-after':
+      return renderBeforeAfter(block)
     default:
       return null
   }
@@ -280,6 +290,105 @@ function renderChart(block: BlockMatch): string {
 function renderMermaid(block: BlockMatch): string {
   // Mermaid content must not be HTML-escaped — the library parses the raw diagram syntax
   return `<div class="ink-mermaid"><pre class="mermaid">${block.content}</pre></div>`
+}
+
+function renderComparison(block: BlockMatch): string {
+  const title = block.props.title || ''
+  const rows = parseTableRows(block.content)
+
+  if (rows.length === 0) {
+    return `<div class="ink-comparison"></div>`
+  }
+
+  // First row = headers
+  const headers = rows[0]
+  const headerCells = headers.map((h) => `<th>${escapeHtml(h)}</th>`).join('')
+
+  // Check if last row starts with "Verdict"
+  let dataRows = rows.slice(1)
+  let verdict = ''
+  if (dataRows.length > 0) {
+    const lastRow = dataRows[dataRows.length - 1]
+    if (lastRow[0].trim().toLowerCase().startsWith('verdict')) {
+      const verdictCells = lastRow.slice(1).map((c) => c.trim()).filter(Boolean)
+      verdict = verdictCells.length > 0
+        ? lastRow[0].trim() + ': ' + verdictCells.join(', ')
+        : lastRow[0].trim()
+      dataRows = dataRows.slice(0, -1)
+    }
+  }
+
+  const bodyRows = dataRows
+    .map((row) => `<tr>${row.map((c) => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`)
+    .join('')
+
+  const titleHtml = title
+    ? `<h4 class="ink-comparison-title">${escapeHtml(title)}</h4>`
+    : ''
+  const verdictHtml = verdict
+    ? `<p class="ink-comparison-verdict">${escapeHtml(verdict)}</p>`
+    : ''
+
+  return `<div class="ink-comparison">${titleHtml}<table class="ink-comparison-table"><thead><tr>${headerCells}</tr></thead><tbody>${bodyRows}</tbody></table>${verdictHtml}</div>`
+}
+
+function renderTimeline(block: BlockMatch): string {
+  const lines = block.content
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+
+  const items = lines.map((line) => {
+    const parts = line.split('|').map((p) => p.trim())
+    const date = escapeHtml(parts[0] || '')
+    const title = escapeHtml(parts[1] || '')
+    const desc = escapeHtml(parts[2] || '')
+    return `<div class="ink-timeline-item"><span class="ink-timeline-date">${date}</span><span class="ink-timeline-dot"></span><div class="ink-timeline-content"><strong>${title}</strong><span>${desc}</span></div></div>`
+  })
+
+  return `<div class="ink-timeline">${items.join('')}</div>`
+}
+
+function renderMetric(block: BlockMatch): string {
+  const value = escapeHtml(block.props.value || '0')
+  const label = escapeHtml(block.props.label || '')
+  const trend = block.props.trend || ''
+  const validTrends = ['up', 'down', 'neutral'] as const
+  const trendValue = validTrends.includes(trend as typeof validTrends[number]) ? trend : ''
+
+  const arrows: Record<string, string> = { up: '\u2191', down: '\u2193', neutral: '\u2192' }
+  const trendHtml = trendValue
+    ? `<span class="ink-metric-trend ink-metric-trend--${trendValue}">${arrows[trendValue]}</span>`
+    : ''
+
+  return `<div class="ink-metric"><span class="ink-metric-value">${value}</span><span class="ink-metric-label">${label}</span>${trendHtml}</div>`
+}
+
+function renderCta(block: BlockMatch): string {
+  const url = escapeHtml(block.props.url || '#')
+  const button = escapeHtml(block.props.button || 'Learn more')
+  const text = escapeHtml(block.content)
+  return `<div class="ink-cta"><p class="ink-cta-text">${text}</p><a href="${url}" class="ink-cta-button">${button}</a></div>`
+}
+
+function renderBeforeAfter(block: BlockMatch): string {
+  const lines = block.content
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+
+  let beforeText = ''
+  let afterText = ''
+
+  for (const line of lines) {
+    if (line.toLowerCase().startsWith('before:')) {
+      beforeText = line.slice(7).trim()
+    } else if (line.toLowerCase().startsWith('after:')) {
+      afterText = line.slice(6).trim()
+    }
+  }
+
+  return `<div class="ink-before-after"><div class="ink-before"><span class="ink-ba-label">Before</span><p>${escapeHtml(beforeText)}</p></div><div class="ink-after"><span class="ink-ba-label">After</span><p>${escapeHtml(afterText)}</p></div></div>`
 }
 
 // --- Helpers ---

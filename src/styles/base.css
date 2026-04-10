@@ -219,6 +219,224 @@ body * {
   font-weight: 600;
 }
 
+/* Comparison block */
+.ink-comparison {
+  border: 1px solid var(--ink-border);
+  border-radius: var(--ink-radius);
+  padding: 1.5em;
+  margin: 1.5em 0;
+}
+
+.ink-comparison-title {
+  font-family: var(--ink-font-display);
+  font-weight: 600;
+  margin-bottom: 0.75em;
+}
+
+.ink-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.75em;
+}
+
+.ink-comparison-table th,
+.ink-comparison-table td {
+  border: 1px solid var(--ink-border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.ink-comparison-table th {
+  background: var(--ink-surface);
+  font-family: var(--ink-font-mono);
+  font-size: 0.875em;
+  font-weight: 600;
+}
+
+.ink-comparison-verdict {
+  font-family: var(--ink-font-mono);
+  font-size: 0.875em;
+  color: var(--ink-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Timeline block */
+.ink-timeline {
+  position: relative;
+  padding-left: 2em;
+  margin: 1.5em 0;
+  border-left: 2px solid var(--ink-border);
+}
+
+.ink-timeline-item {
+  position: relative;
+  padding-bottom: 1.5em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+}
+
+.ink-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.ink-timeline-date {
+  font-family: var(--ink-font-mono);
+  font-size: 0.8125em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  min-width: 5em;
+}
+
+.ink-timeline-dot {
+  position: absolute;
+  left: -2.55em;
+  top: 0.35em;
+  width: 10px;
+  height: 10px;
+  background: var(--ink-primary);
+  border-radius: 50%;
+  border: 2px solid var(--ink-bg);
+}
+
+.ink-timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125em;
+}
+
+.ink-timeline-content strong {
+  font-family: var(--ink-font-display);
+}
+
+.ink-timeline-content span {
+  font-size: 0.875em;
+  color: var(--ink-muted);
+}
+
+/* Metric block */
+.ink-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  padding: 1em 1.25em;
+  border: 1px solid var(--ink-border);
+  border-radius: var(--ink-radius);
+  margin: 1.5em 0;
+}
+
+.ink-metric-value {
+  font-family: var(--ink-font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1;
+}
+
+.ink-metric-label {
+  font-family: var(--ink-font-mono);
+  font-size: 0.875em;
+  color: var(--ink-muted);
+}
+
+.ink-metric-trend {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.ink-metric-trend--up {
+  color: #22c55e;
+}
+
+.ink-metric-trend--down {
+  color: #ef4444;
+}
+
+.ink-metric-trend--neutral {
+  color: var(--ink-muted);
+}
+
+/* CTA block */
+.ink-cta {
+  border: 2px solid var(--ink-primary);
+  border-radius: var(--ink-radius);
+  padding: 1.5em;
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.ink-cta-text {
+  margin-bottom: 1em;
+  font-size: 1.125em;
+}
+
+.ink-cta-button {
+  display: inline-block;
+  background: var(--ink-primary);
+  color: var(--ink-bg);
+  font-family: var(--ink-font-mono);
+  font-size: 0.875em;
+  font-weight: 600;
+  padding: 0.625em 1.5em;
+  border-radius: var(--ink-radius);
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.ink-cta-button:hover {
+  opacity: 0.85;
+}
+
+/* Before-After block */
+.ink-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin: 1.5em 0;
+}
+
+.ink-before,
+.ink-after {
+  border: 1px solid var(--ink-border);
+  border-radius: var(--ink-radius);
+  padding: 1em;
+}
+
+.ink-before {
+  border-top: 3px solid var(--ink-muted);
+}
+
+.ink-after {
+  border-top: 3px solid var(--ink-primary);
+}
+
+.ink-ba-label {
+  display: block;
+  font-family: var(--ink-font-mono);
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  margin-bottom: 0.5em;
+}
+
+.ink-after .ink-ba-label {
+  color: var(--ink-primary);
+}
+
+.ink-before-after p {
+  margin: 0;
+  font-size: 0.9375em;
+}
+
+@media (max-width: 768px) {
+  .ink-before-after {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Utility: hidden on mobile */
 @media (max-width: 768px) {
   .ink-hide-mobile {

@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './content/en/blog' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/blog' }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
@@ -27,7 +27,7 @@ const blog = defineCollection({
 })
 
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './content/en/pages' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/pages' }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -35,7 +35,7 @@ const pages = defineCollection({
 })
 
 const team = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './content/en/team' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content/en/team' }),
   schema: z.object({
     title: z.string(),
     role: z.string(),
