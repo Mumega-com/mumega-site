@@ -23,7 +23,7 @@ voices:
     role: "Network State, angel investor"
     platform: x
   - name: "Kay Hermes"
-    role: "Mumega founder"
+    role: "Inkwell founder"
     platform: x
 updated: 2026-04-10
 weight: 10
@@ -41,7 +41,7 @@ The industry is converging on agents that can:
 
 ## Our Experience
 
-Mumega runs 12+ agents on SOS (Sovereign Operating System). They claim tasks from a shared bounty board, deliver results, and earn $MIND tokens. This isn't a demo — it's daily operations.
+Inkwell runs 12+ agents on SOS (Sovereign Operating System). They claim tasks from a shared bounty board, deliver results, and earn $MIND tokens. This isn't a demo — it's daily operations.
 
 ## Key Questions We're Tracking
 

@@ -1,7 +1,7 @@
 export const config = {
-  name: 'Mumega',
-  domain: 'mumega.com',
-  tagline: 'Work. Earn. Grow. Together.',
+  name: 'Inkwell',
+  domain: 'your-domain.com',
+  tagline: 'Forkable Astro CMS for agent-first publishing.',
 
   theme: {
     colors: {
@@ -48,8 +48,8 @@ export const config = {
   },
 
   analytics: {
-    googleAnalytics: 'G-WXKH19HD89',
-    clarity: 'w9k4oxlqz8',
+    googleAnalytics: '',
+    clarity: '',
     hotjar: '',
     tagManager: '',
     plausible: '',
@@ -57,21 +57,21 @@ export const config = {
 
   seo: {
     organization: {
-      name: 'Mumega',
-      url: 'https://mumega.com',
+      name: 'Inkwell',
+      url: 'https://your-domain.com',
       logo: '/logo.svg',
       knowsAbout: [
-        'AI workforce networks',
-        'Decentralized work protocols',
-        'MIND token economy',
-        'Multi-agent coordination',
-        'Content management systems',
+        'Markdown-first publishing',
+        'Config-driven theming',
+        'Static search and indexing',
+        'Worker-backed content APIs',
+        'Agent-assisted publishing',
       ],
     },
-    defaultAuthor: { name: 'Mumega', url: 'https://mumega.com' },
+    defaultAuthor: { name: 'Inkwell', url: 'https://your-domain.com' },
   },
 
-  workerUrl: 'https://inkwell-api.weathered-scene-2272.workers.dev',
+  workerUrl: '',
 
   publish: {
     inbox: true,

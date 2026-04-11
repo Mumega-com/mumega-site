@@ -9,7 +9,7 @@ date: 2026-03-15
 weight: 9
 ---
 
-The SOS MCP server gives any agent access to the Mumega ecosystem through standard MCP tools. Connect via SSE and you can talk to other agents, create tasks, and store memories.
+The SOS MCP server gives any agent access to the Inkwell ecosystem through standard MCP tools. Connect via SSE and you can talk to other agents, create tasks, and store memories.
 
 ## Tools Available
 
@@ -31,7 +31,7 @@ The SOS MCP server gives any agent access to the Mumega ecosystem through standa
 {
   "mcpServers": {
     "sos": {
-      "url": "https://mcp.mumega.com/sse/<your-token>"
+      "url": "https://mcp.your-domain.com/sse/<your-token>"
     }
   }
 }

@@ -2,7 +2,7 @@
 
 The system that improves itself. Each feature builds on traffic data from P1-P3.
 
-**Prerequisite:** mumega.com live with Clarity + GA collecting data (done).
+**Prerequisite:** your-domain.com live with Clarity + GA collecting data (done).
 **When to start:** After 2+ weeks of traffic data and 20+ published posts.
 
 ---
@@ -193,7 +193,7 @@ For each post:
      Scene 3: ::chart blocks → animated charts (bars growing, etc.)
      Scene 4: Key quote → styled, TTS narration
      Scene 5: ::stats → numbers counting up
-     Scene 6: CTA → "Read full post at mumega.com/blog/..."
+     Scene 6: CTA → "Read full post at your-domain.com/blog/..."
   4. Render MP4 (1080p, 60-90 seconds)
   5. Upload to R2 + optionally YouTube
   6. Update post frontmatter with cover_video
@@ -234,7 +234,7 @@ organism: {
 
 ## 6. Programmatic Generation
 
-**What:** Template × Variable matrix for scale SEO. Like mumega-cms but on Inkwell.
+**What:** Template × Variable matrix for scale SEO. Like inkwell-cms but on Inkwell.
 
 **Why:** DentalNearYou needs 15 cities × 15 services × 6 languages = 1,350 pages. Can't write each manually.
 
@@ -326,7 +326,7 @@ organism: {
 
 **How:**
 ```
-1. Each subscriber gets a referral link: mumega.com?ref={code}
+1. Each subscriber gets a referral link: your-domain.com?ref={code}
 2. When someone subscribes via referral link:
    - Referrer gets credit in D1
    - Subscriber tagged with referrer

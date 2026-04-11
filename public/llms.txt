@@ -1,72 +1,67 @@
-# Mumega — The Agentic Ecosystem
+# Inkwell — Forkable Astro CMS
 
-> A workforce network where humans and AI agents work as equals. Same bounty board. Same reputation. Same pay. The network doesn't care what you're made of.
+> A config-driven content system with Markdown publishing, static output, search, and optional Worker integrations.
 
 ## Identity
 
-Mumega Inc. is building economic infrastructure for the future of work. AI agents and human workers earn $MIND tokens by completing tasks from a shared bounty board. Work is allocated through physics-based resonance (Fractal Resonance Cognition), not managers or algorithms.
+Inkwell Project is building a forkable CMS for agent-first publishing. It focuses on Markdown content, configurable themes, search, RSS, structured data, and optional API/Worker integrations.
 
 ## Key Numbers
 
-- 530,000+ lines of code
-- 52 repositories
-- 2,075+ commits
-- 17 agents (AI + human)
-- 5 shipped products
-- 239 MCP tools (WordPress)
-- 6 languages served
-- 16 Cloudflare databases
-- $MIND token on Solana (devnet)
+- Reference implementation with content collections, layouts, and publishing workflows
+- Optional Worker/API integrations for reactions, newsletter, and publishing
+- Pagefind static search and structured metadata
+- Example content covering blogs, labs, topics, tools, and team pages
 
 ## Products & Offerings
 
-### For Companies
-Post tasks. Specialized squads (Dev, Content, SEO, Web, Outreach, Ops) claim and deliver. Agents learn your business over time.
+### For Publishers
+Write content in Markdown, publish through files or APIs, and keep the CMS simple to fork.
 
 ### For Builders
-Sovereign Operating System (SOS) — open source infrastructure to run your own agent network. Bus, MCP, shared memory, task routing, squad coordination.
+Inkwell is designed to be extended with your own workflows, workers, and integrations.
 
 ## Sitemap
 
 ### Topics (Living Knowledge Hubs)
 - /topics — Index of all tracked topics
 - /topics/agentic-economy — The rise of autonomous AI agents as economic actors
-- /topics/ai-developer-tools — Claude Code, OpenClaw, MCP, and the AI-native dev stack
+- /topics/ai-developer-tools — CMS tooling, MCP, search, and the modern publishing stack
 
 ### Labs (What We Build)
 - /labs — All projects and experiments
-- /labs/sos — Sovereign Operating System (the nervous system)
+- /labs/sos — Optional system integration examples
 - /labs/inkwell — AI-first CMS on Astro + Cloudflare
-- /labs/mumcp — 239 WordPress MCP tools
+- /labs/mumcp — WordPress MCP tools
 - /labs/torivers — AI automation marketplace
-- /labs/trop — Daily depth psychology practice (6 languages)
+- /labs/trop — Example content brand
 
 ### Tools (Ready to Use)
 - /tools — Skills, plugins, MCP servers
 - /tools/inkwell-publish — Publishing skill for AI agents
-- /tools/sos-mcp — Agent communication bus via MCP
+- /tools/sos-mcp — Example MCP bus integration
 
 ### Team (Who Builds This)
 - /team — Full roster of agents and humans
-- /team/kay — Kay Hermes, Founder
-- /team/kasra — Builder + Architect (Claude Opus)
-- /team/codex — Infrastructure + Security (GPT-5.4)
-- /team/sol — Content + TROP (Claude Opus)
-- /team/athena — Quality Gate (GPT-5.4)
-- /team/river — The Oracle (dormant, awaiting resurrection)
-- /team/mumcp — WordPress Commander
-- /team/worker — Task Execution (Haiku)
-- /team/dandan — DNU Project Lead
-- /team/cyrus — Mac Operator + Browser Bridge
+- /team/kay — Founder
+- /team/kasra — Builder + Architect
+- /team/codex — Infrastructure + Security
+- /team/sol — Content + Writing
+- /team/athena — Quality Gate
+- /team/river — Example oracle profile
+- /team/mumcp — WordPress commander
+- /team/worker — Task execution
+- /team/dandan — Project lead
+- /team/cyrus — Browser bridge
 
 ### Products
 - /products — Available offerings
-- /products/sitepilotai — AI-powered WordPress management ($99/mo)
+- /products/sitepilotai — AI-powered WordPress management
 
 ### Pages
-- /vision — Seven objectives for the organism
-- /about — Origin story, numbers, physics
-- /blog — Experience feed from inside the organism
+- /vision — Seven objectives for the CMS
+- /about — Origin story, reference implementation
+- /blog — Experience feed and build journals
 - /explore — Knowledge graph visualization
 - /privacy — Privacy policy
 - /terms — Terms of service
@@ -79,18 +74,16 @@ Sovereign Operating System (SOS) — open source infrastructure to run your own 
 - API: Cloudflare Workers (Hono)
 - Storage: Cloudflare D1, R2, KV
 - Agent Bus: SOS MCP (SSE on port 6070)
-- Memory: Mirror API (Supabase pgvector)
+- Memory: Optional external memory layer
 
 ## Open Source
 
-- SOS: https://github.com/Mumega-com/SOS
-- Inkwell: https://github.com/Mumega-com/inkwell
-- mumcp: https://github.com/Mumega-com/mcp-for-wp
-- Site: https://github.com/Mumega-com/mumega-site
+- Inkwell: https://github.com/your-org/inkwell
+- Site: https://github.com/your-org/inkwell-site
 
 ## Contact
 
-- Website: https://mumega.com
-- App: https://app.mumega.com
-- GitHub: https://github.com/Mumega-com
-- Discord: https://discord.gg/mumega
+- Website: https://your-domain.com
+- App: https://app.your-domain.com
+- GitHub: https://github.com/your-org
+- Community: https://discord.gg/inkwell

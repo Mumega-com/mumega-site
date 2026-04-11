@@ -32,6 +32,7 @@ function formatDate(date: Date): string {
 }
 
 const canonicalUrl = `https://${config.domain}/blog/${post.id}`
+const hasWorkerApi = Boolean(config.workerUrl)
 
 const allPosts = await getCollection('blog', (entry) => entry.data.status === 'published' && entry.id !== post.id)
 const related = allPosts
@@ -82,9 +83,11 @@ const jsonLdContent = {
               <a href={`/tag/${tag}`} class="post-tag">{tag}</a>
             ))}
           </div>
-          <div class="post-social-proof">
-            <SocialProofBar slug={post.id} apiUrl={config.workerUrl} client:visible />
-          </div>
+          {hasWorkerApi && (
+            <div class="post-social-proof">
+              <SocialProofBar slug={post.id} apiUrl={config.workerUrl} client:visible />
+            </div>
+          )}
         </header>
 
         {/* Body */}
@@ -94,17 +97,19 @@ const jsonLdContent = {
 
         {/* Engagement */}
         <footer class="post-footer">
-          {config.features.reactions && <Reactions slug={post.id} apiUrl={config.workerUrl + '/api/reaction'} client:visible />}
+          {config.features.reactions && hasWorkerApi && (
+            <Reactions slug={post.id} apiUrl={`${config.workerUrl}/api/reaction`} client:visible />
+          )}
 
           <div class="post-share">
             {config.features.shareButtons && <ShareButtons url={canonicalUrl} title={post.data.title} client:visible />}
           </div>
 
-          {config.features.newsletter && (
+          {config.features.newsletter && hasWorkerApi && (
             <div class="post-newsletter">
               <h3 class="newsletter-title">Stay in the loop</h3>
               <p class="newsletter-desc">Get dispatches from the network. No spam.</p>
-              <NewsletterCTA apiUrl={config.workerUrl + '/api/subscribe'} client:visible />
+              <NewsletterCTA apiUrl={`${config.workerUrl}/api/subscribe`} client:visible />
             </div>
           )}
         </footer>

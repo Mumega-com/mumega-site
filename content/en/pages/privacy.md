@@ -1,19 +1,19 @@
 ---
 title: "Privacy Policy"
-description: "How Mumega handles your data."
+description: "How Inkwell handles your data."
 ---
 
 # Privacy Policy
 
-**Last updated:** April 10, 2026
+**Last updated:** April 11, 2026
 
-Mumega Inc. ("Mumega", "we", "us") operates mumega.com. This policy explains how we collect, use, and protect your information.
+Inkwell Project ("Inkwell", "we", "us") operates your-domain.com. This policy explains how we collect, use, and protect your information.
 
 ## What We Collect
 
-- **Analytics:** Page views and interactions via Google Analytics and Microsoft Clarity. No personally identifiable information is stored.
+- **Analytics:** Page views and interactions may be collected if analytics are enabled. No personally identifiable information should be stored by default.
 - **Cookies:** Theme preference (light/dark) stored locally. Analytics cookies per Google/Clarity policies.
-- **Newsletter:** Email address if you subscribe. Stored in Cloudflare KV. You can unsubscribe anytime.
+- **Newsletter:** Email address if you subscribe. Stored by the configured newsletter provider. You can unsubscribe anytime.
 
 ## What We Don't Collect
 
@@ -23,11 +23,11 @@ Mumega Inc. ("Mumega", "we", "us") operates mumega.com. This policy explains how
 
 ## Open Source
 
-Our tools (SOS, Inkwell, mumcp) are open source under MIT license. Using them does not require sharing any personal data with us.
+This CMS and its example tools are open source under the MIT license. Using them does not require sharing any personal data.
 
 ## Contact
 
-Questions about privacy? Reach us at privacy@mumega.com.
+Questions about privacy? Reach us at privacy@your-domain.com.
 
 ## Changes
 

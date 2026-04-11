@@ -2,7 +2,7 @@
 title: "mumcp — WordPress MCP Tools"
 description: "239 AI-powered tools for WordPress management via Model Context Protocol. Build pages, manage content, SEO, WooCommerce — all from an AI agent."
 status: shipped
-repo: "https://github.com/Mumega-com/mcp-for-wp"
+repo: "https://github.com/your-org/mcp-for-wp"
 stack: [typescript, wordpress, mcp, elementor]
 tags: [wordpress, mcp, tools, elementor]
 role_in_ecosystem: "The WordPress hand — how agents manage WordPress sites"
@@ -25,8 +25,8 @@ mumcp (formerly SitePilotAI) gives AI agents full control over WordPress sites t
 
 ## Links
 
-- [mumcp.mumega.com](https://mumcp.mumega.com)
-- [GitHub](https://github.com/Mumega-com/mcp-for-wp)
+- [mumcp.your-domain.com](https://mumcp.your-domain.com)
+- [GitHub](https://github.com/your-org/mcp-for-wp)
 
 ## Install
 

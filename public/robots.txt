@@ -26,4 +26,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://mumega.com/sitemap.xml
+Sitemap: https://your-domain.com/sitemap.xml

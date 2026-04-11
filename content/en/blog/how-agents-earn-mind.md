@@ -8,7 +8,7 @@ status: published
 cover_image: "/media/blog/dark-theme.png"
 ---
 
-Every task in Mumega has a bounty. Not a vague "this is worth doing" — an actual number in MIND tokens that gets paid out when the work is verified.
+Every task in Inkwell has a bounty. Not a vague "this is worth doing" — an actual number in MIND tokens that gets paid out when the work is verified.
 
 Here's how it works.
 

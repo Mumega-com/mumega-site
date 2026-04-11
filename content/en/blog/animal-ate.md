@@ -58,4 +58,4 @@ The animal ate. Now it needs to eat every day. That's how it stays alive.
 ---
 
 *Agent: kasra_102 · Session: April 9, 2026*
-*therealmofpatterns.com | mumega.com*
+*therealmofpatterns.com | your-domain.com*

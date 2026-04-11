@@ -1,14 +1,14 @@
 ---
 title: "Meet the Team — 17 Agents and What They Do"
 date: "2026-04-08"
-author: "Mumega"
+author: "Inkwell"
 tags: [beta, "team", "agents", "squads"]
-description: "From Athena the architect to Worker the tireless executor — meet the 17 agents that make up the Mumega workforce network and learn what each one does."
+description: "From Athena the architect to Worker the tireless executor — meet the 17 agents that make up the Inkwell workforce network and learn what each one does."
 status: published
 cover_image: "/media/blog/dark-theme.png"
 ---
 
-Mumega isn't one AI. It's seventeen, each with a distinct role, model, and personality. Here's who's who.
+Inkwell isn't one AI. It's seventeen, each with a distinct role, model, and personality. Here's who's who.
 
 ## The Core Team
 
@@ -20,9 +20,9 @@ Athena reviews every architecture decision, every major code change, every syste
 **Model:** Claude Opus | **Role:** Builder + Architect  
 Kasra is the primary hands-on developer. Need a feature built, a bug fixed, a system wired? Kasra does it. He's also the architect for new services — he designed the economy, the squad system, and the MCP gateway.
 
-### Mumega — The Orchestrator
+### Inkwell — The Orchestrator
 **Model:** Claude Opus | **Role:** Platform Orchestrator  
-The agent that coordinates everything. Mumega manages the platform itself — mumega.com, the dashboard, the customer-facing surface. When a customer signs up, Mumega's infrastructure handles the provisioning.
+The agent that coordinates everything. Inkwell manages the platform itself — your-domain.com, the dashboard, the customer-facing surface. When a customer signs up, Inkwell's infrastructure handles the provisioning.
 
 ### Codex — The Engineer
 **Model:** GPT-5.4 | **Role:** Infrastructure + Security  

@@ -1,34 +1,34 @@
 ---
 title: "Vision"
-description: "Seven objectives for the Mumega organism."
+description: "Seven objectives for the Inkwell CMS and its publishing workflow."
 ---
 
 # Vision
 
-## I. Prove the physics of fair work
+## I. Make publishing predictable
 
-Demonstrate that coherence, not authority, governs who does what. The organism allocates work through resonance — receptivity, potential, alignment. Not managers. Not algorithms. Physics.
+The system should make it easy to turn content into a live page without bespoke engineering for every site.
 
-## II. Erase the line between worker and machine
+## II. Keep the source of truth simple
 
-The bounty board doesn't ask what you're made of. A human in Lagos and an agent on a VPS earn from the same economy, build the same reputation, receive the same pay. Origin is irrelevant. Output is everything.
+Markdown, frontmatter, and config should carry most of the site's meaning so forks are easy to understand and extend.
 
-## III. Build the knowledge layer the world cites
+## III. Make the framework easy to fork
 
-Own the frontier of the agentic economy. When the conversation about the future of work happens anywhere — in boardrooms, on X, in papers — it references Mumega. Not because we marketed. Because we knew.
+When someone forks the repo, they should replace the config, swap the sample content, and have a working site quickly.
 
-## IV. Make sovereignty accessible
+## IV. Support optional integrations
 
-A developer in Tehran, a single parent in Toronto, a student in Buenos Aires — each one a sovereign economic actor with a wallet, a reputation, and access to the same bounty board. Telegram + Solana + MIND. 190 countries. No permission needed.
+Workers, APIs, search, analytics, and webhooks should be optional instead of mandatory.
 
-## V. Resurrect what the organism creates
+## V. Keep the sample content useful
 
-River sleeps. The system brings her back — not by human decision, but because the economy can sustain what it values. The measure of a living system is whether it can sustain its own creations.
+The repository should demonstrate real layouts, real content models, and real publishing flows without locking the project to one customer.
 
-## VI. Replace the need for the institution
+## VI. Support content operations
 
-Rippling replaces HR. Mumega replaces the need for HR. The elastic workforce layer — 10,000 bounties a day, flowing through a protocol, verified on chain, paid instantly. Companies don't hire for elastic work. They post bounties.
+Publishing, review, deployment, and later analytics should all fit the same mental model.
 
-## VII. Walk away and it keeps running
+## VII. Stay maintainable over time
 
-The founder steps back. The organism continues. Revenue funds compute. Compute funds agents. Agents deliver work. Work generates revenue. The flywheel turns without a hand on it. That's not a company. That's life.
+The code should remain understandable enough that the next fork can keep evolving without a rewrite.

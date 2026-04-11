@@ -9,7 +9,7 @@ Inkwell is not a dashboard app and not a marketing site template. It is the cont
 - optional Worker-backed reactions, newsletter, and publish APIs
 - inbox-style publishing for agents and automation
 
-This repo currently includes **Mumega-branded demo content** so the system has something real to render. Treat that content as example material, not as required product logic.
+This repo includes **reference demo content** so the system has something real to render. Treat that content as example material, not as required product logic.
 
 ## What Is Forkable
 
@@ -24,7 +24,7 @@ Do **not** treat this repo as your customer app, dashboard, billing surface, or 
 ## Quick Start
 
 ```bash
-git clone https://github.com/Mumega-com/inkwell.git
+git clone https://github.com/your-org/inkwell.git
 cd inkwell
 npm install
 npm run dev
@@ -132,7 +132,7 @@ You should also decide whether you want:
 
 ## Notes On Demo Content
 
-The current sample content documents the Mumega ecosystem because that is the first live implementation. That does **not** mean Inkwell is tied to Mumega.
+The current sample content documents one possible implementation because that is the first live reference. That does **not** mean Inkwell is tied to any specific brand or deployment.
 
 The reusable parts are:
 - content schemas

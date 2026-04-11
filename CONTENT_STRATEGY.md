@@ -1,59 +1,56 @@
-# Mumega Content Strategy
+# Inkwell Content Strategy
 
 ## Voice
-Mumega speaks as a builder, not a marketer. Technical but accessible. Opinionated but evidence-based. Every claim is backed by something we actually built or measured.
+Inkwell speaks as a builder, not a marketer. Technical but accessible. Opinionated but evidence-based. Every claim should be backed by something the site can actually show: a post, a page, a feature, or a working integration.
 
 ## Content Pillars
 
-### 1. Vision (tag: vision, workforce)
-What Mumega is, why it exists, where it's going.
-- The workforce network thesis
-- Humans + AI as equals
-- Decentralization > centralization
-- Phase 1/2/3 roadmap updates
+### 1. Vision
+What the CMS is, who it is for, and where it is going.
+- Why the framework exists
+- What problems it solves
+- What a fork should change first
+- How the roadmap evolves
 
-### 2. Economy (tag: economy, mind-tokens, solana)
-How the MIND economy works.
-- Token mechanics
-- Payout splits (75/10/10/5)
-- FRC physics of fair work
-- Treasury and bank architecture
-- Bounty board mechanics
+### 2. Publishing
+How content moves from draft to live page.
+- Markdown and MDX workflows
+- Inbox-based publishing
+- API-backed publishing
+- Review and deploy steps
 
-### 3. Technology (tag: technology, cms, cloudflare)
+### 3. Technology
 What we build and how.
-- Inkwell v3 (this CMS)
-- SOS architecture
-- MCP integration
-- Cloudflare edge stack
-- Build journals (what we shipped this week)
+- Astro, Cloudflare, and static output
+- Search, RSS, sitemap, and JSON-LD
+- Optional Worker integrations
+- Build journals and release notes
 
-### 4. Team (tag: team, agents)
-Who works here.
-- Agent profiles (what they do, what they've shipped)
-- Squad spotlights
-- New agent onboarding stories
-- Performance and conductance updates
+### 4. People
+Who maintains the system.
+- Maintainer profiles
+- Contributor spotlights
+- Onboarding stories
+- What each role owns
 
-### 5. Projects (tag: projects)
-Client work and revenue streams.
-- TROP cosmic readings
-- DentalNearYou SEO
-- AgentLink
-- Viamar flywheel
-- Customer case studies
+### 5. Examples
+Demonstrations of the CMS in action.
+- Case studies
+- Sample topic pages
+- Sample product pages
+- Integration writeups
 
 ## Content Calendar
 
 ### Weekly Rhythm
-- **Monday:** Build journal — what happened last week, what's planned
-- **Wednesday:** Deep dive — one topic from the pillars above
-- **Friday:** Tendril — react to trending topic through Mumega's lens
+- **Monday:** Build journal — what changed and why
+- **Wednesday:** Deep dive — one feature or workflow
+- **Friday:** Reaction post — how current events relate to the CMS
 
 ### Monthly
-- Team spotlight — profile one agent or squad
-- Economy report — MIND stats, tasks completed, revenue
-- Technology review — what we built, what we learned
+- Maintainer spotlight — profile one contributor or role
+- Release recap — shipped features, fixes, and lessons
+- Platform review — what the system learned from the month
 
 ## Publishing Flow
 
@@ -68,57 +65,57 @@ Client work and revenue streams.
 
 ### From the bus:
 ```
-mcp__sos__send(to="mumega-com-web", text="publish: [markdown content]")
+mcp__sos__send(to="inkwell-web", text="publish: [markdown content]")
 → Agent processes → drops in inbox → ingest → deploy
 ```
 
 ## Content Quality Rules
 
-1. Every post must have a description (for SEO + social cards)
-2. Every post must have 2+ tags (for discoverability + knowledge graph edges)
-3. Minimum 300 words (no thin content)
-4. Must include at least one of: data, example, story, opinion
-5. No generic AI voice — write from Mumega's position, cite our work
+1. Every post must have a description for search and social cards
+2. Every post must have 2+ tags for discoverability
+3. Minimum 300 words unless the format is intentionally short
+4. Must include at least one of: data, example, story, or opinion
+5. Write from the perspective of the project, not generic AI filler
 6. Link to related posts using [[wikilinks]] or relative URLs
 
 ## Flywheel Topics (monitor these)
 
 ### Hacker News
-- AI agents, autonomous agents, agent frameworks
+- AI-assisted publishing
 - CMS alternatives, static site generators
 - Cloudflare Workers, edge computing
-- Solana, crypto payments, DePIN
-- Remote work, freelancing, gig economy
+- Markdown tooling and editor workflows
+- Distributed collaboration tools
 
 ### Reddit
-- r/artificial, r/MachineLearning
 - r/webdev, r/nextjs, r/cloudflare
-- r/solana, r/CryptoCurrency
+- r/Wordpress, r/ghost, r/cms
+- r/artificial, r/MachineLearning
 
 ### Industry
-- Anthropic blog (Claude updates)
-- OpenAI blog (GPT/agent updates)
-- Cloudflare blog (infrastructure)
-- Ghost/WordPress/CMS news
+- Astro releases
+- Cloudflare platform updates
+- OpenAI and Anthropic product changes
+- CMS, blogging, and publishing news
 
 ## Reaction Post Template
 
-When trending topic aligns with our pillars:
+When a trending topic aligns with our pillars:
 
 ```markdown
 ---
 title: "[Topic] — Here's What We Think"
 date: "YYYY-MM-DD"
-author: "mumega-com-web"
+author: "inkwell-web"
 tags: ["relevant-tag", "another"]
-description: "Our take on [topic], from experience running a workforce network."
+description: "Our take on [topic], from experience running a forkable CMS."
 ---
 
 [1 paragraph: what happened — the news]
 
 ## Why This Matters
 
-[2 paragraphs: connect to Mumega's perspective]
+[2 paragraphs: connect to Inkwell's perspective]
 
 ## What We've Learned
 
@@ -132,8 +129,8 @@ description: "Our take on [topic], from experience running a workforce network."
 ## Success Metrics
 
 - **Publish rate:** 3 posts/week minimum
-- **Organic traffic:** growing week over week (via GA/Clarity)
-- **Read-through:** >60% average (via scroll depth tracking)
+- **Organic traffic:** growing week over week
+- **Read-through:** >60% average where content is long-form
 - **Knowledge graph density:** edges per node increasing
 - **Newsletter subscribers:** growing
 - **Reaction engagement:** >5% of readers react

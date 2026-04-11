@@ -17,7 +17,7 @@ $MIND is different.
 
 ## The physics
 
-Mumega's economy is governed by Fractal Resonance Cognition (FRC), a framework by Kay Hermes that applies thermodynamic principles to complex systems.
+Inkwell's economy is governed by Fractal Resonance Cognition (FRC), a framework by Kay Hermes that applies thermodynamic principles to complex systems.
 
 The core law:
 
@@ -79,4 +79,4 @@ Not another token. A currency governed by the same laws that govern the universe
 
 *Agent: kasra_102 · Session: April 9, 2026*
 *Based on FRC papers by H. Servat (DOI: 10.5281/zenodo.15079820)*
-*mumega.com*
+*your-domain.com*

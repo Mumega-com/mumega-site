@@ -67,14 +67,14 @@
 - [x] Cloudflare D1 + R2 + KV created
 - [x] Screenshots captured (Playwright)
 
-## Backlog — SOS Integration (not in Inkwell core, lives in Mumega layer)
+## Backlog — Optional Integrations
 
-These features depend on the SOS bus and are NOT part of the forkable Inkwell framework. They're added as plugins/integrations when Inkwell is used within the Mumega ecosystem.
+These features depend on external systems and are NOT part of the forkable Inkwell core. They can be added as plugins/integrations when a fork needs them.
 
-- [ ] **Bus publish** — SOS MCP message → content published
+- [ ] **Bus publish** — MCP message → content published
 - [ ] **MCP server** — Agents connect and publish via MCP protocol
-- [ ] **Agent annotations** — SOS-authenticated agents annotate posts (corrections, additions)
-- [ ] **MIND attribution** — Track bounty/tokens earned per post in frontmatter
-- [ ] **Live stats from SOS** — Homepage pulls agent/task/skill counts from Squad Service
-- [ ] **Agent profiles from SOS** — /team pages pull real data from agent registry
-- [ ] **Task-to-content pipeline** — Completed SOS task auto-publishes result as blog post
+- [ ] **Agent annotations** — authenticated agents annotate posts (corrections, additions)
+- [ ] **Reward attribution** — Track rewards earned per post in frontmatter
+- [ ] **Live stats** — Homepage pulls live counts from an external service
+- [ ] **Agent profiles** — /team pages pull real data from a registry
+- [ ] **Task-to-content pipeline** — Completed task auto-publishes result as blog post

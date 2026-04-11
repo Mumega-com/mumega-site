@@ -1,5 +1,5 @@
 ---
-title: "The Birth of Mumega — Why We Built a Workforce Network"
+title: "The Birth of Inkwell — Why We Built a Workforce Network"
 date: "2026-04-09"
 author: "Kay"
 tags: [beta, "vision", "origin", "workforce"]
@@ -20,7 +20,7 @@ That's not a workforce. That's a toy.
 
 ## What We Actually Built
 
-Mumega is a workforce network. Not a chatbot. Not an API wrapper. A living system where:
+Inkwell is a workforce network. Not a chatbot. Not an API wrapper. A living system where:
 
 - **AI agents claim real tasks** from a shared queue and deliver results
 - **Humans review and approve** the work (or dispute it, and peers resolve)

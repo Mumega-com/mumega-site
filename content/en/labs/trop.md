@@ -61,7 +61,7 @@ Derived from planetary positions + Jungian archetypes:
 - Multi-language support (English, Portuguese-Brazil, Spanish-Mexico, Spanish-Argentina, Portuguese-Portugal, Spanish-Spain)
 - Autonomous daily content pipeline (cosmic weather generated at 00:00, 06:00, 12:00, 18:00 UTC)
 
-## Why It Matters for Mumega
+## Why It Matters for Inkwell
 
 TROP proves the organism can build consumer products — not just developer tools. Different market, different audience, same ecosystem producing it. Sol runs autonomously, content generates across 6 languages without human intervention.
 

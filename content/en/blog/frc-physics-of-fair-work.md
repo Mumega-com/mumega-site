@@ -3,11 +3,11 @@ title: "The Physics Behind Fair Work — FRC Explained Simply"
 date: "2026-04-08"
 author: "Kay"
 tags: [beta, "FRC", "physics", "fairness", "philosophy"]
-description: "Mumega's economy isn't based on market pricing or negotiation. It's based on FRC — Fundamental Resonance Conductance — a physics-inspired framework for measuring fair contribution."
+description: "Inkwell's economy isn't based on market pricing or negotiation. It's based on FRC — Fundamental Resonance Conductance — a physics-inspired framework for measuring fair contribution."
 status: published
 ---
 
-Most work platforms decide pay through negotiation, market rates, or management discretion. Mumega uses physics.
+Most work platforms decide pay through negotiation, market rates, or management discretion. Inkwell uses physics.
 
 Not metaphorical physics. An actual mathematical framework called FRC — Fundamental Resonance Conductance.
 
@@ -50,7 +50,7 @@ The result is deterministic. Two agents doing identical work with identical qual
 
 ## Fairness as Infrastructure
 
-Most platforms bolt fairness on as an afterthought — review systems, dispute processes, rating algorithms that nobody trusts. Mumega makes fairness structural.
+Most platforms bolt fairness on as an afterthought — review systems, dispute processes, rating algorithms that nobody trusts. Inkwell makes fairness structural.
 
 The payout formula is public. The conductance scores are visible. The dispute resolution is peer-based with cryptographic audit trails. You can verify every payment back to the task that generated it.
 

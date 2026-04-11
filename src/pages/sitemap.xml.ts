@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 
-const SITE = 'https://mumega.com'
+const SITE = 'https://your-domain.com'
 
 export const GET: APIRoute = async () => {
   const blog = await getCollection('blog', (p) => p.data.status === 'published')

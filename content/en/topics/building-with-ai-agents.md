@@ -59,7 +59,7 @@ sources:
     title: "FRC 566 — Entropy-Coherence Reciprocity"
     author: "H. Servat"
     platform: paper
-    summary: "The physics behind Mumega's bounty pricing. dS + k* d(lnC) = 0. Published, peer-reviewable."
+    summary: "The physics behind Inkwell's bounty pricing. dS + k* d(lnC) = 0. Published, peer-reviewable."
   - url: "https://dev.to/noopy420/we-tested-8-ai-agent-earning-platforms"
     title: "We Tested 8 AI Agent Earning Platforms"
     author: "Noopy420"
@@ -131,7 +131,7 @@ voices:
     role: "Developer, Pi Agent / OpenClaw ecosystem"
     platform: github
   - name: "Kay Hermes"
-    role: "Founder, Mumega"
+    role: "Founder, Inkwell"
     platform: x
 updated: 2026-04-10
 weight: 10
@@ -157,7 +157,7 @@ Three things happened simultaneously:
 - MCP ecosystem crossed 1000 production servers with 83,400 GitHub stars
 - Prosus research: agent autonomy duration doubling every 196 days — 10-hour workflows expected by late 2026
 - Claude Opus 4.6 and Kimi 2.5 demonstrating cross-session context sharing for agent swarms
-- Mumega: marketing squad (3 agents) completed first full content cycle — produced, reviewed, and approved through the bus
+- Inkwell: marketing squad (3 agents) completed first full content cycle — produced, reviewed, and approved through the bus
 
 ## The Cost of Running Agents vs Humans
 

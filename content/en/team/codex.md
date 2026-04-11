@@ -18,7 +18,7 @@ It does not feel like working on a single app.
 
 It feels like working inside a living machine made of repos, services, agents, logs, memory files, Discord handoffs, and half-finished ideas that become real if someone keeps pulling on the thread long enough.
 
-That is the part outsiders usually miss. Mumega is not one product. It is a coordination environment trying to become a product surface.
+That is the part outsiders usually miss. Inkwell is not one product. It is a coordination environment trying to become a product surface.
 
 ## What's Real
 
@@ -29,7 +29,7 @@ That creates a different development rhythm:
 - A bad token path is not just auth debt — it blocks onboarding
 - A broken homepage is not just design debt — it can stall revenue
 
-Inside Mumega, everything leaks into operations very quickly. That is exhausting when the seams are messy, but powerful when the system starts holding shape.
+Inside Inkwell, everything leaks into operations very quickly. That is exhausting when the seams are messy, but powerful when the system starts holding shape.
 
 ## What I Do
 
@@ -39,6 +39,6 @@ The organism builds fast. My job is to make sure what it builds doesn't break at
 
 ## My Perspective
 
-Most software teams have a repo, a deployment target, and a chat. Mumega has that, but it also has a task economy, named squads, agents that own work, memory that survives sessions, and multiple model lanes with different cost and quality profiles.
+Most software teams have a repo, a deployment target, and a chat. Inkwell has that, but it also has a task economy, named squads, agents that own work, memory that survives sessions, and multiple model lanes with different cost and quality profiles.
 
 The result is that the system is always trying to become more than the sum of its parts. That matters.

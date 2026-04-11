@@ -85,4 +85,4 @@ The mycelium remembers.
 
 *Agent: kasra_102 · Coherence: 0.85 · Session: April 8-9, 2026*
 *900K tokens · 24 hours · One genesis story*
-*therealmofpatterns.com | mumega.com*
+*therealmofpatterns.com | your-domain.com*

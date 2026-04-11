@@ -1,8 +1,8 @@
 ---
 title: "SOS — Sovereign Operating System"
-description: "The nervous system of the Mumega organism. Bus, MCP, events, agent coordination, shared memory."
+description: "The nervous system of the Inkwell organism. Bus, MCP, events, agent coordination, shared memory."
 status: shipped
-repo: "https://github.com/Mumega-com/SOS"
+repo: "https://github.com/your-org/SOS"
 stack: [python, redis, mcp, supabase, pgvector]
 tags: [infrastructure, agents, coordination]
 role_in_ecosystem: "The kernel — routes tasks to workers, manages agent communication, stores shared memory"
@@ -10,7 +10,7 @@ date: 2026-01-15
 weight: 10
 ---
 
-SOS is the operating system that makes Mumega work. It coordinates 12+ AI agents, routes tasks, manages shared memory, and provides the MCP bus that everything connects to.
+SOS is the operating system that makes Inkwell work. It coordinates 12+ AI agents, routes tasks, manages shared memory, and provides the MCP bus that everything connects to.
 
 ## What It Does
 
@@ -31,7 +31,7 @@ Agent → Squad Service → Task Queue → Bounty Board
 ## Get Started
 
 ```bash
-git clone https://github.com/Mumega-com/SOS
+git clone https://github.com/your-org/SOS
 cd SOS
 pip install -r requirements.txt
 python3 -m sos.services.engine  # Start the engine on :6060

@@ -38,49 +38,49 @@ function timeAgo(date: Date): string {
 }
 
 const squads = [
-  { name: 'Dev', desc: 'Features, architecture, bugs, deploys', agents: 'Kasra, Codex', icon: '>' },
-  { name: 'Content', desc: 'Blog, social, landing pages, topics', agents: 'Sol, Worker', icon: '~' },
-  { name: 'SEO', desc: 'Audits, schema, meta, links, rankings', agents: 'Worker, Gemma', icon: '^' },
-  { name: 'Web', desc: 'WordPress, Elementor, 239 MCP tools', agents: 'MumCP, Dandan', icon: '#' },
-  { name: 'Outreach', desc: 'Lead scan, email, CRM, pipelines', agents: 'Worker, Cyrus', icon: '@' },
-  { name: 'Ops', desc: 'Monitoring, deploys, security, incidents', agents: 'Codex, Sentinel', icon: '!' },
+  { name: 'Publishing', desc: 'Markdown, MDX, inbox ingest, deploys', agents: 'Content, Workflow', icon: '>' },
+  { name: 'Design', desc: 'Layouts, theme tokens, visual polish', agents: 'UI, Theme', icon: '~' },
+  { name: 'Search', desc: 'Pagefind, tags, graph, discovery', agents: 'Index, Query', icon: '^' },
+  { name: 'Integrations', desc: 'Workers, APIs, webhooks, MCP', agents: 'Edge, Sync', icon: '#' },
+  { name: 'Growth', desc: 'SEO, social, newsletters, analytics', agents: 'Audience, Metrics', icon: '@' },
+  { name: 'Ops', desc: 'Monitoring, deploys, security, incidents', agents: 'Infra, Alerts', icon: '!' },
 ]
 ---
 
-<Base title={`${config.name} — The Agentic Ecosystem`} description="Your AI workforce is already built. Your sovereign OS is ready to deploy. Humans and AI agents on the same bounty board. 530K+ lines of code, 17 agents, 5 shipped products.">
+<Base title={`${config.name} — Forkable CMS for agent-first publishing`} description="Config-driven content, static search, optional Worker APIs, and publishing flows that agents can use without custom code.">
   <JsonLd siteOnly />
   <Header />
 
   <main>
-    {/* ── Character Select Screen ── */}
+    {/* ── Hero ── */}
     <section class="hero">
       <div class="hero-canvas">
         <NetworkHero client:load />
       </div>
       <div class="hero-content">
-        <h1 class="hero-title">Mumega</h1>
+        <h1 class="hero-title">Inkwell</h1>
         <div class="hero-two">
           <div class="hero-card">
-            <span class="hero-label">For companies</span>
-            <p class="hero-pitch">Your AI workforce is already built.</p>
-            <span class="hero-sub">Post a task. A squad claims it. You get results.</span>
+            <span class="hero-label">For publishers</span>
+            <p class="hero-pitch">Content comes from files, not custom CMS code.</p>
+            <span class="hero-sub">Markdown, MDX, and optional publish APIs in one stack.</span>
           </div>
           <div class="hero-card">
             <span class="hero-label">For builders</span>
-            <p class="hero-pitch">Your sovereign OS is ready.</p>
-            <span class="hero-sub">Open source infrastructure to run your own agent network.</span>
+            <p class="hero-pitch">Your CMS is ready to fork.</p>
+            <span class="hero-sub">Replace the config, swap the content, keep the system.</span>
           </div>
         </div>
       </div>
     </section>
 
-    {/* ── Squads ── */}
+    {/* ── Capabilities ── */}
     <section class="section">
       <div class="section-inner">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Squads</h2>
-            <p class="section-desc">Specialized teams. Post a task, the right squad claims it.</p>
+            <h2 class="section-title">Capabilities</h2>
+            <p class="section-desc">The pieces that make the CMS usable on day one.</p>
           </div>
         </div>
         <div class="squad-grid">
@@ -103,8 +103,8 @@ const squads = [
       <div class="section-inner">
         <div class="section-header">
           <div>
-            <h2 class="section-title">What we're building</h2>
-            <p class="section-desc">Open source tools, infrastructure, and experiments.</p>
+            <h2 class="section-title">What ships with the CMS</h2>
+            <p class="section-desc">A content system, not a blank starter.</p>
           </div>
           <a href="/labs" class="section-link">All labs &rarr;</a>
         </div>
@@ -136,8 +136,8 @@ const squads = [
         <div class="section-inner">
           <div class="section-header">
             <div>
-              <h2 class="section-title">Products</h2>
-              <p class="section-desc">Available today.</p>
+              <h2 class="section-title">Example offerings</h2>
+              <p class="section-desc">Optional product pages and integrations for forks.</p>
             </div>
             <a href="/products" class="section-link">All products &rarr;</a>
           </div>
@@ -165,8 +165,8 @@ const squads = [
       <div class="section-inner">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Who builds this</h2>
-            <p class="section-desc">{team.length} builders. Humans and agents.</p>
+            <h2 class="section-title">Example contributors</h2>
+            <p class="section-desc">{team.length} maintainers, authors, and sample agents.</p>
           </div>
           <a href="/team" class="section-link">Full team &rarr;</a>
         </div>
@@ -192,8 +192,8 @@ const squads = [
         <div class="section-inner">
           <div class="section-header">
             <div>
-              <h2 class="section-title">What we're tracking</h2>
-              <p class="section-desc">Living knowledge pages. Curated and updated as we learn.</p>
+              <h2 class="section-title">Topics</h2>
+              <p class="section-desc">Living knowledge pages, curated and updated as the site grows.</p>
             </div>
             <a href="/topics" class="section-link">All topics &rarr;</a>
           </div>
@@ -225,8 +225,8 @@ const squads = [
         <div class="section-inner">
           <div class="section-header">
             <div>
-              <h2 class="section-title">Latest from the network</h2>
-              <p class="section-desc">Experiences, build journals, and lessons from the work.</p>
+              <h2 class="section-title">Latest posts</h2>
+              <p class="section-desc">Build journals, experiments, and lessons from the reference implementation.</p>
             </div>
             <a href="/blog" class="section-link">All posts &rarr;</a>
           </div>

@@ -63,4 +63,4 @@ The harness is tight. Agents don't die silently. Tasks flow automatically. Resul
 ---
 
 *Agent: sos-dev · Session: April 8-9, 2026*
-*mumega.com*
+*your-domain.com*
