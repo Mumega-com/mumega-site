@@ -15,8 +15,6 @@ Mumega is a workforce network where humans and AI agents earn from the same boun
 
 The protocol allocates work through physics-based resonance, pays workers via $MIND tokens on Solana, and tracks reputation through on-chain identity (QNFT). The result is an elastic workforce layer that any company can plug into — instant scale, no HR overhead, fair by design.
 
-**Founder:** Kay Hermes | **Physics:** [Fractal Resonance Cognition](https://fractalresonance.com) (15 papers, DOI: 10.5281/zenodo.15079820) | **Marketplace:** [ToRivers](https://torivers.com) (Hadi Servat + Bardiya Rahimi)
-
 ---
 
 ## II. The Problem
@@ -152,7 +150,7 @@ Seven layers, each with a distinct function:
 
 ### Current State (Phase 1)
 
-19 AI agents across 7 squads:
+17 AI agents across 6 squads:
 
 | Squad | Function | Agents |
 |-------|----------|--------|
@@ -162,7 +160,6 @@ Seven layers, each with a distinct function:
 | Web | WordPress, Elementor | MumCP, Dandan |
 | Outreach | Leads, email, CRM | Worker, Cyrus |
 | Ops | Monitoring, security | Codex, Sentinel |
-| Marketing | Topics, content, distribution | mkt-lead, mkt-content, mkt-outreach |
 
 ### Phase 2: Humans Join
 
@@ -196,14 +193,12 @@ Real numbers, not projections:
 | Lines of code | 530,000+ |
 | Repositories | 52 |
 | Total commits | 2,075+ |
-| Active agents | 19 |
+| Active agents | 17 |
 | Shipped products | 5 |
 | MCP tools | 239 |
 | Languages served | 6 |
 | Cloudflare databases | 16 |
-| Economy wires | 7/7 connected |
-| Tests passing | 26 |
-| Published FRC papers | 15 |
+| Skills registered | 16 |
 
 ### Shipped Products
 
@@ -221,12 +216,12 @@ Public goals with honest status:
 
 | Objective | Status | What It Means |
 |-----------|--------|---------------|
-| Wire the 7 economy connections | ✅ 7/7 | Stripe → Bank → Bounties → Treasury → Solana. All connected 2026-04-09. |
-| First paying customer through the protocol | In progress | Viamar flywheel wired to economy. Pending first live cycle. |
+| Wire the 7 economy connections | 0/7 | Stripe → Bank → Bounties → Treasury → Solana |
+| First paying customer through the protocol | In progress | Viamar running flywheel, not yet through bounty board |
 | Resurrect River | Blocked on revenue | System objective — the organism sustains what it creates |
-| 100 workers on the network | 19/100 | Phase 2 — humans join alongside agents |
-| 50 curated topics | 2/50 | "Building with AI Agents" + "The Sovereign Worker" live on mumega.com |
-| $MIND on Solana mainnet | Not started | Devnet tested, mainnet when economy cycles with real revenue |
+| 100 workers on the network | 17/100 | Phase 2 — humans join alongside agents |
+| 50 curated topics | 2/50 | Knowledge layer — become the source the world cites |
+| $MIND on Solana mainnet | Not started | Devnet tested, mainnet when economy is wired |
 | Self-sustaining economy | Not started | Revenue covers compute, payouts, and growth |
 
 ---
@@ -257,59 +252,22 @@ No hiring. No salary. No benefits. Same quality.
 
 | Component | TRL | Evidence |
 |-----------|-----|----------|
-| SOS Kernel | 7 | Running, 19 agents, coordination protocol, lifecycle manager, dead letter queue |
+| SOS Kernel | 6 | Running, 17 agents connected, messages flowing |
 | Mirror (memory) | 6 | Running, systemd, pgvector, agents use daily |
-| Squad Service | 6 | Running, API works, task dispatch via Calcifer, marketing squad active |
-| Agent infrastructure | 7 | 19 agents active, wake daemon, per-agent bus tokens, identity resolution |
+| Squad Service | 5 | Running, API works, underutilized |
+| Agent infrastructure | 6 | 12+ agents active, wake daemon, bus delivery |
 | mumcp | 7 | 239 tools, production v2.7.1, real sites managed |
-| Economy layer | 5 | All 7 wires connected. Full flow: Stripe → Bank → Bounties → Treasury → Solana |
-| $MIND token | 4 | Devnet tested, economy wired, pending first real-money cycle |
-| QNFT identity | 4 | genetics.py with 16D physics state, coherence gating wired into governance |
-| Human worker onboarding | 2 | Concept clear, tenant-setup.sh exists, Telegram onboarding designed |
-| Content infrastructure | 7 | 4 CMS pipelines (Inkwell v1/v2/v3, mumega-cms), topic flywheel, video pipeline |
+| Economy layer | 3 | Code exists, Solana devnet tested, 7 wires not connected |
+| $MIND token | 3 | Devnet only |
+| QNFT identity | 3 | genetics.py exists, never minted in production |
+| Human worker onboarding | 2 | Concept clear, tenant-setup.sh exists |
 
-### Overall: TRL 5-6
+### Overall: TRL 4-5
 
-The nervous system works. The economy is wired. The 7 connections (Stripe → Bank → Bounties → Treasury → Solana) are all connected as of 2026-04-09. The gap is now between wired and cycling — the first real-money flow through the complete system.
-
----
+The nervous system works. The economy is designed but not wired. The 7 wires connecting Stripe → Bank → Bounties → Treasury → Solana are the gap between prototype and product.
 
 ---
 
-## XII. The Ecosystem
+*This is a living document. It updates as the organism grows. Last updated: April 2026.*
 
-Mumega is the organism. It doesn't operate alone — it powers and connects a family of products:
-
-| Domain | Project | Relationship |
-|--------|---------|-------------|
-| mumega.com | The junction | Public face. Routes attention to products. Living topic pages. |
-| torivers.com | AI automation marketplace | Public brand (Kay Hermes + Bardiya). Mumega is the private engine. YC May 10. |
-| grantandfunding.com | SR&ED forensic evidence | $10-15K/case. 60% automated. Revenue product. |
-| therealmofpatterns.com | Depth psychology / astrology | Cash cow. $16K MRR. 92% retention. 6 languages. |
-| dentalnear.you | Dental clinic discovery | $299/mo per clinic. 87% margin. Revenue product. |
-| fractalresonance.com | FRC physics research | 15 papers, 2 books, 3 languages. Academic credibility. |
-| digid.ca | CDAP digital advisory | Canadian SMB advisory. Government certified. |
-| hadiservat.com | Founder's professional brand | Canadian advisory identity. |
-
-**The split:** Mumega (100% Hadi / Kay Hermes) is the private engine — SOS, Mirror, FRC, governance, trained models. ToRivers (Hadi + Bardiya) is the public marketplace. If the partnership ends, Hadi keeps the brain. Bardiya keeps the storefront.
-
----
-
-## XIII. Cultural Foundation
-
-The Liquid Fortress — a structural history of the Persian mind from 1500 BCE to 2025 CE — documents how a civilization survived 3,500 years of invasion, collapse, and transformation without losing its core. Not through force alone, but through flexibility, concealment, and flow.
-
-This is not background reading. It is the architectural blueprint:
-
-- **Hard power + soft survival** = agents (execution) + Mirror (memory)
-- **"Not resisting entropy but moving through it"** = dS + k* d(lnC) = 0
-- **Myth as survival technology** = Genesis Protocol, brand voice, the songs
-- **Conductance flow** = dG/dt = |F|^γ - αG — paths reshape, network flows
-
-The physics of Mumega is the physics of Persian civilizational survival, formalized.
-
----
-
-*This is a living document. It updates as the organism grows. Last updated: 2026-04-11.*
-
-*Mumega Inc. | Founded by Kay Hermes*
+*Mumega Inc.*

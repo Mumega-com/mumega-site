@@ -30,6 +30,13 @@ const typeLabels: Record<string, string> = { skill: 'Skill', plugin: 'Plugin', '
         </div>
         <h1>{tool.data.title}</h1>
         <p class="tool-desc">{tool.data.description}</p>
+        {tool.data.tags.length > 0 && (
+          <div class="tool-tags">
+            {tool.data.tags.map((tag) => (
+              <a href={`/tag/${tag}`} class="tool-tag">#{tag}</a>
+            ))}
+          </div>
+        )}
         {tool.data.repo && <a href={tool.data.repo} target="_blank" rel="noopener noreferrer" class="tool-repo">View source</a>}
       </div>
       <div class="ink-prose">
@@ -52,6 +59,9 @@ const typeLabels: Record<string, string> = { skill: 'Skill', plugin: 'Plugin', '
   .tool-agent { font-family: var(--ink-font-mono); font-size: 0.6875rem; color: var(--ink-accent); }
   h1 { font-family: var(--ink-font-display); font-size: 2.5rem; font-weight: 700; color: var(--ink-text); letter-spacing: -0.03em; margin: 0 0 0.5rem; }
   .tool-desc { color: var(--ink-muted); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem; }
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 1rem; }
+  .tool-tag { font-family: var(--ink-font-mono); font-size: 0.6875rem; color: var(--ink-primary); padding: 0.125rem 0.5rem; border-radius: 9999px; border: 1px solid var(--ink-primary); text-decoration: none; }
+  .tool-tag:hover { background: color-mix(in srgb, var(--ink-primary) 8%, var(--ink-surface)); }
   .tool-repo { font-family: var(--ink-font-mono); font-size: 0.8125rem; color: var(--ink-primary); text-decoration: none; font-weight: 600; }
   .tool-repo:hover { text-decoration: underline; }
 </style>

@@ -12,6 +12,7 @@ import { NewsletterCTA } from '../../components/engagement/NewsletterCTA'
 import { getCollection, render } from 'astro:content'
 import { config } from '../../lib/config'
 import { getReadingTime } from '../../lib/reading-time'
+import { loadContentDirectory, resolveReferences } from '../../lib/content-directory'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -33,12 +34,20 @@ function formatDate(date: Date): string {
 
 const canonicalUrl = `https://${config.domain}/blog/${post.id}`
 const hasWorkerApi = Boolean(config.workerUrl)
+const postTags = post.data.tags.filter((tag) => tag.toLowerCase() !== 'beta')
 
 const allPosts = await getCollection('blog', (entry) => entry.data.status === 'published' && entry.id !== post.id)
 const related = allPosts
-  .filter((p) => p.data.tags.some((t) => post.data.tags.includes(t)))
+  .filter((p) => {
+    const candidateTags = p.data.tags.filter((tag) => tag.toLowerCase() !== 'beta')
+    return candidateTags.some((tag) => postTags.includes(tag))
+  })
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3)
+
+const directory = await loadContentDirectory()
+const relatedLinks = resolveReferences(post.data.related, directory)
+const connections = resolveReferences(post.data.connections, directory)
 
 const jsonLdContent = {
   slug: `/blog/${post.id}`,
@@ -94,6 +103,39 @@ const jsonLdContent = {
         <div class="ink-prose">
           <Content />
         </div>
+
+        {(relatedLinks.length > 0 || connections.length > 0) && (
+          <section class="post-link-sections">
+            {relatedLinks.length > 0 && (
+              <div class="post-link-group">
+                <h2 class="link-group-title">Related links</h2>
+                <div class="link-grid">
+                  {relatedLinks.map((link) => (
+                    <a href={link.href} class="link-card" target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                      <span class="link-kind">{link.label}</span>
+                      <h3 class="link-title">{link.title}</h3>
+                      {link.description && <p class="link-desc">{link.description}</p>}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {connections.length > 0 && (
+              <div class="post-link-group">
+                <h2 class="link-group-title">Connections</h2>
+                <div class="link-list">
+                  {connections.map((link) => (
+                    <a href={link.href} class="link-row" target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                      <span class="link-kind">{link.label}</span>
+                      <span class="link-title">{link.title}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
 
         {/* Engagement */}
         <footer class="post-footer">
@@ -327,6 +369,91 @@ const jsonLdContent = {
     font-size: 0.6875rem;
     color: var(--ink-primary);
     margin-top: auto;
+  }
+
+  .post-link-sections {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--ink-border);
+  }
+
+  .link-group-title {
+    font-family: var(--ink-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink-text);
+    letter-spacing: -0.02em;
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .link-card,
+  .link-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem 1.1rem;
+    background: var(--ink-surface);
+    border: 1px solid var(--ink-border);
+    border-radius: var(--ink-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .link-row {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .link-card:hover,
+  .link-row:hover {
+    border-color: var(--ink-primary);
+    transform: translateY(-1px);
+  }
+
+  .link-kind {
+    font-family: var(--ink-font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-primary);
+    font-weight: 600;
+  }
+
+  .link-title {
+    font-family: var(--ink-font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-text);
+    margin: 0;
+  }
+
+  .link-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
   }
 
   @media (max-width: 768px) {

@@ -1,0 +1,8 @@
+{
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "showLineNumber": false,
+  "spellcheck": true,
+  "tabSize": 2,
+  "userIgnoreFilters": [".obsidian/"]
+}

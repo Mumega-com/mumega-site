@@ -25,6 +25,13 @@ const { Content } = await render(lab)
         <h1>{lab.data.title}</h1>
         <p class="lab-desc">{lab.data.description}</p>
         {lab.data.role_in_ecosystem && <p class="lab-role">{lab.data.role_in_ecosystem}</p>}
+        {lab.data.tags.length > 0 && (
+          <div class="lab-tags">
+            {lab.data.tags.map((tag) => (
+              <a href={`/tag/${tag}`} class="lab-tag">#{tag}</a>
+            ))}
+          </div>
+        )}
         <div class="lab-meta">
           {lab.data.repo && <a href={lab.data.repo} target="_blank" rel="noopener noreferrer" class="lab-link">GitHub</a>}
           <div class="lab-stack">
@@ -50,6 +57,9 @@ const { Content } = await render(lab)
   h1 { font-family: var(--ink-font-display); font-size: 2.5rem; font-weight: 700; color: var(--ink-text); letter-spacing: -0.03em; margin: 0.5rem 0; }
   .lab-desc { color: var(--ink-muted); font-size: 1.125rem; line-height: 1.6; margin: 0 0 0.5rem; }
   .lab-role { font-size: 0.9375rem; color: var(--ink-primary); font-style: italic; margin: 0 0 1rem; }
+  .lab-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 1rem; }
+  .lab-tag { font-family: var(--ink-font-mono); font-size: 0.6875rem; color: var(--ink-primary); padding: 0.125rem 0.5rem; border-radius: 9999px; border: 1px solid var(--ink-primary); text-decoration: none; }
+  .lab-tag:hover { background: color-mix(in srgb, var(--ink-primary) 8%, var(--ink-surface)); }
   .lab-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
   .lab-link { font-family: var(--ink-font-mono); font-size: 0.8125rem; color: var(--ink-primary); text-decoration: none; font-weight: 600; }
   .lab-link:hover { text-decoration: underline; }

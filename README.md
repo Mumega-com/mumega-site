@@ -8,6 +8,7 @@ Inkwell is not a dashboard app and not a marketing site template. It is the cont
 - static search via Pagefind
 - optional Worker-backed reactions, newsletter, and publish APIs
 - inbox-style publishing for agents and automation
+- Obsidian-friendly vault mode for editing the same `content/en/` tree
 
 This repo includes **reference demo content** so the system has something real to render. Treat that content as example material, not as required product logic.
 
@@ -116,6 +117,16 @@ Write markdown directly into `content/en/blog/` or `content/en/pages/`, then bui
 ### 3. API-backed publishing
 
 If you deploy the Worker layer, you can expose your own `POST /api/publish` path and send content from agents or external systems.
+
+## Obsidian Vault Mode
+
+The `content/en/` tree is also set up as an Obsidian vault. Open it directly in Obsidian, or use:
+
+```bash
+bash scripts/open-obsidian-vault.sh
+```
+
+The vault-specific settings live in `content/en/.obsidian/` and are intentionally lightweight so they do not interfere with Astro builds.
 
 ## Fork Checklist
 

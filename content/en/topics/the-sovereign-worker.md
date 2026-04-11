@@ -99,7 +99,7 @@ sources:
     title: "FRC 566 — Entropy-Coherence Reciprocity"
     author: "H. Servat"
     platform: paper
-    summary: "The physics governing bounty pricing in Inkwell. Work value derived from coherence change, not arbitrary estimation."
+    summary: "The physics governing bounty pricing in Mumega. Work value derived from coherence change, not arbitrary estimation."
 voices:
   - name: "David Autor"
     role: "Labor Economist, MIT"
@@ -138,7 +138,7 @@ voices:
     role: "CEO, Trullion — AI commoditizing basic accounting, elevating strategic judgment"
     platform: article
   - name: "Kay Hermes"
-    role: "Founder, Inkwell — building the protocol for sovereign work"
+    role: "Founder, Mumega — building the protocol for sovereign work"
     platform: x
 updated: 2026-04-10
 weight: 9

@@ -30,7 +30,7 @@ AI developer tools are reshaping how software gets built. We track the tools our
 
 ## Tools We Use Daily
 
-- **Claude Code** — primary builder tool for Kasra, Inkwell agents
+- **Claude Code** — primary builder tool for Kasra, Mumega agents
 - **OpenClaw** — runs Athena, Sol, Worker, Dandan on various models
 - **MCP Protocol** — the bus standard connecting all 17 agents
 - **Codex CLI** — Codex agent's primary interface

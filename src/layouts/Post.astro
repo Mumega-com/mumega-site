@@ -19,6 +19,20 @@ interface Props {
       date: string
       description?: string
     }>
+    relatedLinks?: Array<{
+      title: string
+      href: string
+      label?: string
+      description?: string
+      external?: boolean
+    }>
+    connections?: Array<{
+      title: string
+      href: string
+      label?: string
+      description?: string
+      external?: boolean
+    }>
   }
 }
 
@@ -47,7 +61,7 @@ const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
         {post.tags && post.tags.length > 0 && (
           <div class="post-tags">
             {post.tags.map((tag) => (
-              <a href={`/blog/tag/${tag}`} class="post-tag">{tag}</a>
+              <a href={`/tag/${tag}`} class="post-tag">{tag}</a>
             ))}
           </div>
         )}
@@ -127,6 +141,39 @@ const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
               </a>
             ))}
           </div>
+        </section>
+      )}
+
+      {(post.relatedLinks && post.relatedLinks.length > 0 || post.connections && post.connections.length > 0) && (
+        <section class="post-links">
+          {post.relatedLinks && post.relatedLinks.length > 0 && (
+            <div class="post-links-group">
+              <h2>Related links</h2>
+              <div class="post-links-grid">
+                {post.relatedLinks.map((link) => (
+                  <a href={link.href} class="post-link-card" target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                    {link.label && <span class="post-link-label">{link.label}</span>}
+                    <h3>{link.title}</h3>
+                    {link.description && <p>{link.description}</p>}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {post.connections && post.connections.length > 0 && (
+            <div class="post-links-group">
+              <h2>Connections</h2>
+              <div class="post-links-list">
+                {post.connections.map((link) => (
+                  <a href={link.href} class="post-link-row" target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                    {link.label && <span class="post-link-label">{link.label}</span>}
+                    <span class="post-link-title">{link.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
       )}
     </main>
@@ -375,6 +422,98 @@ const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
   .post-related-card time {
     font-size: 0.75rem;
     color: var(--ink-dim);
+  }
+
+  .post-links {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--ink-border);
+  }
+
+  .post-links-group h2 {
+    font-family: var(--ink-font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink-text);
+  }
+
+  .post-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .post-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .post-link-card,
+  .post-link-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem 1.1rem;
+    background: var(--ink-surface);
+    border: 1px solid var(--ink-border);
+    border-radius: var(--ink-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 150ms ease, transform 150ms ease;
+  }
+
+  .post-link-row {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .post-link-card:hover,
+  .post-link-row:hover {
+    border-color: var(--ink-primary);
+    transform: translateY(-1px);
+  }
+
+  .post-link-label {
+    font-family: var(--ink-font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-primary);
+    font-weight: 600;
+  }
+
+  .post-link-title {
+    font-family: var(--ink-font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-text);
+  }
+
+  .post-link-card h3 {
+    font-family: var(--ink-font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-text);
+    margin: 0;
+  }
+
+  .post-link-card p {
+    font-size: 0.825rem;
+    color: var(--ink-muted);
+    margin: 0;
+    line-height: 1.5;
   }
 
   /* TOC sidebar */
