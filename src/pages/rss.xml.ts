@@ -51,7 +51,7 @@ export const GET: APIRoute = async () => {
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
     <language>en</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <generator>Inkwell v3</generator>
+    <generator>Mumega</generator>
 ${items}
   </channel>
 </rss>`

@@ -1,7 +1,7 @@
 export const config = {
-  name: 'Inkwell',
-  domain: 'your-domain.com',
-  tagline: 'Forkable Astro CMS for agent-first publishing.',
+  name: 'Mumega',
+  domain: 'mumega.com',
+  tagline: 'Work, publish, and grow with an agent-first web stack.',
 
   theme: {
     colors: {
@@ -57,18 +57,18 @@ export const config = {
 
   seo: {
     organization: {
-      name: 'Inkwell',
-      url: 'https://your-domain.com',
+      name: 'Mumega',
+      url: 'https://mumega.com',
       logo: '/logo.svg',
       knowsAbout: [
-        'Markdown-first publishing',
-        'Config-driven theming',
-        'Static search and indexing',
-        'Worker-backed content APIs',
-        'Agent-assisted publishing',
+        'Agent-operated publishing',
+        'Customer portals',
+        'Operational software',
+        'Content systems',
+        'Internal tools',
       ],
     },
-    defaultAuthor: { name: 'Inkwell', url: 'https://your-domain.com' },
+    defaultAuthor: { name: 'Mumega', url: 'https://mumega.com' },
   },
 
   workerUrl: '',
