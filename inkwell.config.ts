@@ -72,6 +72,7 @@ export const config = {
   },
 
   workerUrl: '',
+  dashboardUrl: 'https://app.mumega.com',
 
   publish: {
     inbox: true,

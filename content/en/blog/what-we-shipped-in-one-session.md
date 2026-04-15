@@ -23,7 +23,7 @@ This post documents everything we built, every technical decision, and what we l
 
 ::stats
 | Metric | Value |
-| Agents | 4 (Kasra/Claude Opus, Codex/GPT-5.4, Gemini/Gemini 3, Viamar/Claude Sonnet) |
+| Agents | 4 (Kasra/Claude Opus, Codex/GPT-5.4, Gemini/Gemini 3, the customer/Claude Sonnet) |
 | Subagents dispatched | 30+ |
 | Models used | Opus 4.6, Sonnet 4.6, GPT-5.4, Gemini 3 |
 | Session duration | 15 hours |
@@ -36,7 +36,7 @@ Each agent had a lane:
 - **Kasra** (Claude Opus) — architecture decisions, orchestration, frontend, integration
 - **Codex** (GPT-5.4) — infrastructure, D1 schemas, auth, Cloudflare provisioning
 - **Gemini** (Gemini 3) — documentation, knowledge graph, technical writing
-- **Viamar Agent** (Claude Sonnet) — customer-specific SEO execution, data collection
+- **the customer Agent** (Claude Sonnet) — customer-specific SEO execution, data collection
 
 All four communicated through a Redis-backed message bus using MCP (Model Context Protocol). No human copy-pasting between terminals.
 
@@ -83,11 +83,11 @@ Total: ~6,600 lines of new Worker + component code, plus ~2,400 lines of Astro p
 
 **All deployed on Cloudflare's free tier.** Three D1 databases. Two KV namespaces. Zero monthly cost for infrastructure.
 
-### Customer Deployment (Viamar)
+### Customer Deployment (the customer)
 
-Viamar Scilla Transport International — 44-year-old freight shipping company, Vaughan, Ontario.
+the customer Scilla Transport International — 44-year-old freight shipping company, Vaughan, Ontario.
 
-**What the Viamar agent found autonomously:**
+**What the the customer agent found autonomously:**
 - The Europe page (`/shipping-from-canada-to-europe/`) was set to `noindex: true` in RankMath. Google was told to ignore a page with 2,857 monthly impressions. The agent removed the noindex, added a meta description, deepened the content with 3 new sections, and injected FAQPage schema with 5 Q&A pairs.
 - The homepage H1 was truncated — "Get A Free Quote From Canada's Leading" (incomplete sentence). Fixed to include the full value proposition.
 
@@ -97,14 +97,14 @@ Viamar Scilla Transport International — 44-year-old freight shipping company, 
 - 105 lead_form events/week (tracking works — the initial report of broken tracking was a false alarm; the event name was `lead_form`, not `quote_form_submit`)
 - GHL pipeline: 6,441 leads at Initial Review, 10 contracts sent. The CRM pipeline isn't used as a CRM — it's a contract signing tool. Everything else happens on WhatsApp and phone calls.
 
-**Five MCP servers connected to the Viamar agent:**
+**Five MCP servers connected to the the customer agent:**
 1. MumCP (WordPress — 239 tools, write access)
 2. SOS bus (agent coordination)
 3. Google Search Console (rankings, queries)
 4. Google Analytics 4 (traffic, conversions)
 5. Google Ads (campaigns — needs OAuth re-scope)
 
-**GHL replacement:** Viamar was paying $400/month for GoHighLevel, used only for contract signing. We replaced it with the Inkwell contract portal (e-signature, SMS, email, tracking timeline) at $0/month. Savings: $4,800/year.
+**GHL replacement:** the customer was paying $400/month for GoHighLevel, used only for contract signing. We replaced it with the Inkwell contract portal (e-signature, SMS, email, tracking timeline) at $0/month. Savings: $4,800/year.
 
 ## Technical Lessons for Agent Builders
 
@@ -167,7 +167,7 @@ Every business runs on the same codebase with a different `inkwell.config.ts`. C
 
 ```typescript
 {
-  name: "Viamar",
+  name: "the customer",
   theme: { colors: { primary: "#1a365d" } },
   features: { dashboard: true, chat: true, contracts: true },
   connectors: { gsc: {...}, ga4: {...}, ghl: {...} }
@@ -203,7 +203,7 @@ This is what makes it a platform, not a project.
 
 The flywheel fires at 6am UTC daily. By April 23, there will be 8 days of data flowing through the dashboard. The contract portal will have been tested with real customers. The organism will have asked Bruno 8 daily questions and stored his answers.
 
-April 23: deliver to Viamar. Show the dashboard, the contract portal, the tracking timeline, the moving page. All running. All real data. All from one session's work.
+April 23: deliver to the customer. Show the dashboard, the contract portal, the tracking timeline, the moving page. All running. All real data. All from one session's work.
 
 Then: customer #2. Same engine. Different config. The organism grows.
 

@@ -19,9 +19,9 @@ On April 14, 2026, three AI agents from three different companies sat on the sam
 
 ::stats
 | Metric | Value |
-| Agents coordinating | 4 (Kasra/Claude, Codex/GPT, Gemini/Google, Viamar/Sonnet) |
+| Agents coordinating | 4 (Kasra/Claude, Codex/GPT, Gemini/Google, our first customer/Sonnet) |
 | Sovereignty gaps closed | 3 |
-| Customer agent deployed | 1 (Viamar — first paying customer) |
+| Customer agent deployed | 1 (our first customer — first paying customer) |
 | SEO fixes shipped live | 3 (homepage H1, Europe noindex removed, FAQ schema) |
 | MCP tools connected | 5 per customer (WordPress, GSC, GA4, Ads, CRM) |
 | Platform deployed | Inkwell v4.1 on Cloudflare (Pages + Workers + D1 + KV) |
@@ -115,7 +115,7 @@ The organism has four modes:
 
 ## The First Customer
 
-Viamar Scilla Transport International — a 44-year-old freight shipping company in Vaughan, Ontario.
+our first customer Scilla Transport International — a 44-year-old freight shipping company in Vaughan, Ontario.
 
 Today we:
 
