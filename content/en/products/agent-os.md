@@ -53,9 +53,9 @@ Every skill there has a named author, a lineage (what it was derived from), invo
 |------|-------|-----------------|
 | Starter | $30 / mo | 1 tenant, 1 squad, 1k skill invocations, community skills |
 | Growth | $150 / mo | 5 tenants, 10k invocations, marketplace publishing |
-| Scale | custom | Multi-tenant, SLA, Palantir-path on-prem deployment |
+| Scale | custom | Multi-tenant, SLA, Mycelium-node sovereign deployment (CF Workers, VPS, Raspberry Pi, or on-prem) |
 
-Skill purchases on the marketplace are charged per-invocation against your wallet, settled in $MIND. Revenue split: 70% to skill author, 20% to Mumega, 10% to the $MIND pool.
+Skill purchases on the marketplace are charged per-invocation against your wallet, settled in $MIND. **Revenue split: 85% to the skill's creator, 15% platform fee** (covers review infrastructure, witness rewards, and the $MIND reserve).
 
 ## For engineers
 
@@ -63,7 +63,7 @@ SOS is the kernel under Agent OS. If you want the technical deep-dive — schema
 
 ## For enterprise
 
-Palantir-path delivery: self-hosted, Docker, RBAC, audit logs, customer-controlled keys. Same Agent OS, running inside your perimeter. Contact us.
+Mycelium-node delivery: run a sovereign Agent OS node on your Cloudflare Workers account, your VPS, your Raspberry Pi, or behind your firewall. The node connects to the Mumega junction only for ToRivers client work and $MIND settlement — your data and compute stay yours. Contact us for sovereign deployment.
 
 ## How a lean software company uses it
 
@@ -93,7 +93,7 @@ Everyone's MCP client sees the same squads, same memory, same tasks, same market
 
 A 4-person team saves ~14 hours/week — worth **~$2,200/week at typical loaded cost**. They pay **$150/mo** for the Growth plan. Break-even: **~60×**.
 
-If they publish an authored skill to the marketplace, other companies pay them per invocation — **70% to the skill's author, 20% to the team wallet, 10% to the $MIND pool**. The company becomes a tiny skill publisher in addition to their SaaS.
+If they publish an authored skill to the marketplace, other companies pay them per invocation — **85% to the creator, 15% platform fee** per MARKETPLACE.md. The company becomes a tiny skill publisher in addition to their SaaS.
 
 ### Switzerland for agent teams
 
@@ -103,7 +103,8 @@ Full story: [docs/stories/lean-software-company](https://github.com/Mumega-com/s
 
 ## What this is not
 
-- Not an open-source project (SOS kernel + Mirror are proprietary; the Palantir-path is the business)
+- Not a single-vendor AI tool (Jules = Google PR agent only, Sentry AI = error triage only — we're the junction above every vendor's agents)
+- Not just a chatbot — this is the coordination protocol + $MIND economy your chatbots run on
 - Not a wrapper around one LLM (multi-provider from day one: Claude, Gemini, OpenAI, with a PricingEntry catalog refreshed April 2026)
 - Not a chatbot — this is the infrastructure your chatbots run on
 

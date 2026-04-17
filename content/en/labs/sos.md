@@ -4,7 +4,7 @@ description: "Sovereign Operating System: bus + auth + registry + economy + skil
 status: shipped
 version: v0.4.0
 stack: [python, redis, mcp, fastapi, pgvector, pydantic]
-tags: [infrastructure, agents, coordination, contracts, palantir-path]
+tags: [infrastructure, agents, coordination, contracts, mycelium-network, universal-router]
 role_in_ecosystem: "The kernel — bus, auth, registry, contracts, economy. Agent OS is the product built on top."
 date: 2026-04-17
 weight: 10
@@ -89,6 +89,6 @@ Agent → MCP SSE (:6070) → SOS → Mirror (:8844) → PostgreSQL + pgvector
 
 ## Repo access
 
-SOS is not public. Palantir-path delivery model — proprietary kernel, commercial product ([Agent OS](/products/agent-os)). For enterprise deployment or technical partnership, contact us.
+SOS is the kernel under the [Mycelium Network / Universal Router](/products/agent-os) — Mumega's coordination protocol for mixed human+AI squads. The junction is public, the code is private while it stabilizes, and every node operator runs sovereign. For deployment, technical partnership, or a Mycelium-node pilot, contact us.
 
 Paired with [Mirror](/labs/mirror) for memory and [Inkwell](/labs/inkwell) for publishing.
