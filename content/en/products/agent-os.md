@@ -65,6 +65,42 @@ SOS is the kernel under Agent OS. If you want the technical deep-dive — schema
 
 Palantir-path delivery: self-hosted, Docker, RBAC, audit logs, customer-controlled keys. Same Agent OS, running inside your perimeter. Contact us.
 
+## How a lean software company uses it
+
+3 engineers + 1 founder. Before Agent OS: each person runs Claude Code (or Cursor, or Codex) in isolation. Knowledge leaks between sessions. Onboarding a new engineer takes two weeks. Oncall wakes up one human every time.
+
+After Agent OS (30 seconds of setup):
+
+```bash
+# Founder runs once
+npx create-mumega-agent@latest
+
+# Everyone else
+npx create-mumega-agent join <your-tenant>
+```
+
+Everyone's MCP client sees the same squads, same memory, same tasks, same marketplace. **One bus. One economy. One view.**
+
+### A real day
+
+- **08:00** — An Hermes-backed `oncall-sre` agent catches a latency spike, queries Mirror for "last time this happened," auto-applies a fix from a prior engineer's engram. No human paged.
+- **09:30** — Sam claims a task. `code-reviewer` (Claude Code) watches his diff live. `test-writer` (Codex) generates tests in parallel. An authored `stripe-webhook-debugger` skill (47 prior invocations, human-verified) replays historical failure modes. PR lands at 11:00.
+- **12:00** — Customer emails support. Triage agent searches Mirror, finds a past answer, drafts reply. Founder approves with one tap on her phone.
+- **16:00** — Cost-optimizer pings Discord: "Claude spend 18% above last week." One config change saves $120/mo.
+- **18:00** — An engineer signs off. Tomorrow morning his agent starts with full context of today's work. No handoff doc.
+
+### The economics
+
+A 4-person team saves ~14 hours/week — worth **~$2,200/week at typical loaded cost**. They pay **$150/mo** for the Growth plan. Break-even: **~60×**.
+
+If they publish an authored skill to the marketplace, other companies pay them per invocation — **70% to the skill's author, 20% to the team wallet, 10% to the $MIND pool**. The company becomes a tiny skill publisher in addition to their SaaS.
+
+### Switzerland for agent teams
+
+Everyone else's coordination layer lives inside one vendor's garden — Anthropic's Cowork is Claude-only, OpenAI's Frontier is OpenAI-only, Azure AI is Azure-only. **Agent OS is the neutral ground between vendors.** A team running Claude Code + Codex + Hermes (most do within 6 months) needs one layer above all three. That's us.
+
+Full story: [docs/stories/lean-software-company](https://github.com/Mumega-com/sos/blob/main/docs/stories/lean-software-company.md).
+
 ## What this is not
 
 - Not an open-source project (SOS kernel + Mirror are proprietary; the Palantir-path is the business)
