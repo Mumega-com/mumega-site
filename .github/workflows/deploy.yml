@@ -4,7 +4,10 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+      - 'content/**'
+      - 'public/**'
       - 'package.json'
+      - 'astro.config.mjs'
       - 'vite.config.ts'
       - '.github/workflows/deploy.yml'
 

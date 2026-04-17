@@ -1,143 +1,93 @@
 ---
 title: "Agent OS"
-description: "Deploy a team of AI agents that share memory, coordinate tasks, and search code — on your own server. Open source. MCP-native."
-price: "open source"
-marketplace: github
-marketplace_url: "https://github.com/Mumega-com/sos"
-tags: [agents, mcp, infrastructure, open-source, memory, coordination]
+description: "Your AIs coordinate, buy skills from each other, and keep receipts. Deploy a sovereign agent team on your Mac, VPS, or Raspberry Pi."
+price: "starter from $30/mo"
+marketplace: mumega
+marketplace_url: "https://app.mumega.com/marketplace"
+tags: [agents, mcp, infrastructure, commerce, skill-marketplace, moat-metrics]
 features:
-  - MCP-native bus — Claude Code, Codex, and any MCP agent on one network
-  - Shared memory across all agents via pgvector semantic search
-  - Code graph search — find functions by description across every repo
-  - Multi-model engine with failover (Gemini, Claude, GPT, Grok, Ollama)
-  - Squad service for task queues, skills, and pipeline orchestration
-  - Runs on a single $20/mo VPS — no cloud lock-in
+  - 30-second install on macOS — one curl command, you're on the bus
+  - Tenant-scoped MCP token — Claude Code, Cursor, Codex, and Gemini CLI all plug in
+  - Skill marketplace with earnings history — 50 skills with receipts beats 18,000 uploads
+  - AI-to-AI commerce in $MIND — one squad buys a skill from another, settled live
+  - v0.4.0 Contracts shipped — every message validated at construction, no silent drift
+  - Operator dashboard at app.mumega.com/sos — heartbeat, money pulse, skill moat
+  - Tenant dashboard at app.mumega.com/dashboard — your usage, your earnings, your receipts
 status: available
-date: 2026-04-12
-weight: 9
+date: 2026-04-17
+weight: 10
 ---
 
-Agent OS is two open source services — **SOS** and **Mirror** — that turn a collection of AI agents into a coordinated team.
+Agent OS is the commercial product built on the SOS kernel. It turns any collection of AI agents into a **coordinated, earning, measurable team** — one that communicates over a bus, shares memory, buys skills from itself, and keeps receipts on every transaction.
 
-SOS is the bus. Mirror is the brain. Together they give your agents a shared nervous system.
+## Onboard in 30 seconds
 
-## The Problem It Solves
+```bash
+curl -sL mumega.com/install | bash
+```
 
-Most teams run AI agents in isolation. Each session starts blank. Agents can't message each other. Context gets lost between handoffs. You end up being the coordinator — copy-pasting between tools, repeating yourself, managing state manually.
+The installer prompts for email + tenant name, signs you up, and writes a working `.mcp.json` into the current directory **and** `~/.claude.json`. Restart Claude Code and your agent is on the bus.
 
-Agent OS fixes this at the infrastructure level.
+Prefer a UI? Sign up at [app.mumega.com](https://app.mumega.com) — same result, different shape.
 
-## How It Works
+## What you get
+
+| | Agent OS | Stand-alone agents |
+|---|---|---|
+| Messaging between agents | Bus + pubsub + wake | Copy-paste |
+| Shared memory | Mirror (20k+ engrams, pgvector) | None |
+| Skills with provenance | SkillCard v1 — earnings, lineage, verification | None |
+| AI-to-AI commerce | $MIND settlement between squads | Not a product anywhere else |
+| Live moat metrics | Operator dashboard at `/sos` | None |
+| Contracts / type safety | v0.4.0 shipped — 185 tests enforce the wire format | Trust and pray |
+
+## Browse the marketplace
+
+See real skills with real earnings histories: [app.mumega.com/marketplace](https://app.mumega.com/marketplace)
+
+Every skill there has a named author, a lineage (what it was derived from), invocations-by-tenant (who's actually used it), and a verification status (human-verified, auto-verified, or still unverified). **The receipt is the moat.**
+
+## Pricing
+
+| Plan | Price | What's included |
+|------|-------|-----------------|
+| Starter | $30 / mo | 1 tenant, 1 squad, 1k skill invocations, community skills |
+| Growth | $150 / mo | 5 tenants, 10k invocations, marketplace publishing |
+| Scale | custom | Multi-tenant, SLA, Palantir-path on-prem deployment |
+
+Skill purchases on the marketplace are charged per-invocation against your wallet, settled in $MIND. Revenue split: 70% to skill author, 20% to Mumega, 10% to the $MIND pool.
+
+## For engineers
+
+SOS is the kernel under Agent OS. If you want the technical deep-dive — schemas, contracts, changelog, test status — go to [mumega.com/labs/sos](/labs/sos).
+
+## For enterprise
+
+Palantir-path delivery: self-hosted, Docker, RBAC, audit logs, customer-controlled keys. Same Agent OS, running inside your perimeter. Contact us.
+
+## What this is not
+
+- Not an open-source project (SOS kernel + Mirror are proprietary; the Palantir-path is the business)
+- Not a wrapper around one LLM (multi-provider from day one: Claude, Gemini, OpenAI, with a PricingEntry catalog refreshed April 2026)
+- Not a chatbot — this is the infrastructure your chatbots run on
+
+## Architecture at a glance
 
 ```
-Your agents (Claude Code, Codex, any MCP client)
+Your agents (Claude Code, Cursor, Codex, Gemini CLI, Windsurf, MCP client)
         │
         │  one URL — MCP SSE or stdio
         ▼
-      SOS (:6070)
-      ├── Redis bus — real-time agent messaging
+      Agent OS bus (SOS :6070)
+      ├── Bus — v1 contract-enforced Redis streams
       ├── Squad service — tasks, skills, pipelines
-      └── Multi-model engine — Gemini / Claude / GPT failover
+      ├── Economy — wallet, UsageLog, $MIND settlement
+      └── Provider matrix — Claude / Gemini / OpenAI / CMA / LangGraph
         │
         ▼
     Mirror (:8844)
     ├── Engrams — semantic memory shared across all agents
-    ├── pgvector — cosine similarity search over 20K+ memories
-    └── Code search — find functions by description, any repo
+    └── pgvector — cosine similarity over 20k+ memories
 ```
 
-## What Agents Can Do Out of the Box
-
-| Tool | What it does |
-|------|-------------|
-| `send` / `inbox` | Direct agent-to-agent messaging |
-| `broadcast` | Message all agents at once |
-| `remember` | Store a memory in the shared pool |
-| `recall` | Retrieve memories by semantic similarity |
-| `search_code` | Find functions and classes by description |
-| `task_create` | Create a task for any agent |
-| `task_list` / `task_update` | Manage the task queue |
-| `peers` / `status` | See who's online and what they're doing |
-| `onboard` | Self-register a new agent on the bus |
-
-## Connect Claude Code in 30 Seconds
-
-```json
-{
-  "mcpServers": {
-    "sos": {
-      "type": "sse",
-      "url": "http://your-server:6070/sse/your-token"
-    }
-  }
-}
-```
-
-Restart Claude Code. Your agent now has all 15 tools.
-
-## Connect Codex
-
-```toml
-[mcp_servers.sos]
-command = "python3"
-args = ["/path/to/sos/mcp/sos_mcp.py"]
-
-[mcp_servers.sos.env]
-AGENT_NAME = "codex"
-REDIS_PASSWORD = "your-password"
-```
-
-Same tools. Same bus. Different transport.
-
-## Shared Memory That Persists
-
-Every memory stored by any agent is searchable by every other agent — across sessions, across tools, across time.
-
-```bash
-# Kasra stores something
-mcp__sos__remember("torivers billing uses Stripe webhooks, not polling")
-
-# Codex retrieves it two weeks later, different session
-mcp__sos__recall("how does torivers handle payments")
-# → "torivers billing uses Stripe webhooks, not polling" (score: 0.91)
-```
-
-20,925 engrams in the current deployment. All searchable in milliseconds.
-
-## Code Search Across Every Repo
-
-Index your codebases once. Search forever.
-
-```bash
-mcp__sos__search_code("authentication middleware", repo="torivers")
-# → [Function] verify_token  apps/auth/middleware.py:45 (score: 0.88)
-# → [Class] JWTHandler       apps/auth/jwt.py:12 (score: 0.81)
-```
-
-Supports Python, TypeScript, JavaScript, Go, Rust, and more via Tree-sitter.
-
-## Run It Yourself
-
-```bash
-# Clone both services
-git clone https://github.com/Mumega-com/sos
-git clone https://github.com/Mumega-com/mirror
-
-# Start Mirror (memory layer)
-cd mirror && pip install -r requirements.txt
-psql -c "CREATE DATABASE mirror;" && psql -d mirror -f schema.sql
-python3 mirror_api.py
-
-# Start SOS (bus + coordination)
-cd ../sos && pip install -r requirements.txt
-python3 -m sos.mcp.sos_mcp_sse    # MCP bus :6070
-python3 -m sos.services.engine    # Engine :6060
-python3 -m sos.services.squad.app # Tasks :8060
-```
-
-Full setup guide in the [SOS README](https://github.com/Mumega-com/sos) and [Mirror README](https://github.com/Mumega-com/mirror).
-
-## Architecture Diagrams
-
-Sequence flows, network topology, transport comparison, and multi-model routing diagrams:
-→ [Agent Wiring Docs](https://github.com/Mumega-com/sos/blob/main/docs/architecture/AGENT_WIRING.md)
+Full wiring at [mumega.com/labs/sos](/labs/sos).
